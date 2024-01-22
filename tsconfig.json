@@ -23,7 +23,7 @@
     // TODO: Update later
     "paths": {
       "@shared": ["./src"],
-      "@shared/App": ["./src/App.tsx"],
+      "@shared/App": ["./src/App.tsx"]
     }
   },
   "include": ["src"],

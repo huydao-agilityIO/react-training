@@ -1,15 +1,15 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import tsconfigPaths from "vite-tsconfig-paths";
-import EnvironmentPlugin from "vite-plugin-environment";
-import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tsconfigPaths from 'vite-tsconfig-paths';
+import EnvironmentPlugin from 'vite-plugin-environment';
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    EnvironmentPlugin("all"),
+    EnvironmentPlugin('all'),
     react({
-      jsxImportSource: "@welldone-software/why-did-you-render",
+      jsxImportSource: '@welldone-software/why-did-you-render'
     }),
     tsconfigPaths(),
     ViteImageOptimizer({
@@ -21,57 +21,57 @@ export default defineConfig({
         multipass: true,
         plugins: [
           {
-            name: "preset-default",
+            name: 'preset-default',
             params: {
               overrides: {
                 cleanupNumericValues: false,
-                removeViewBox: false, // https://github.com/svg/svgo/issues/1128
+                removeViewBox: false // https://github.com/svg/svgo/issues/1128
               },
               cleanupIDs: {
                 minify: false,
-                remove: false,
+                remove: false
               },
-              convertPathData: false,
-            },
+              convertPathData: false
+            }
           },
-          "sortAttrs",
+          'sortAttrs',
           {
-            name: "addAttributesToSVGElement",
+            name: 'addAttributesToSVGElement',
             params: {
-              attributes: [{ xmlns: "http://www.w3.org/2000/svg" }],
-            },
-          },
-        ],
+              attributes: [{ xmlns: 'http://www.w3.org/2000/svg' }]
+            }
+          }
+        ]
       },
       png: {
         // https://sharp.pixelplumbing.com/api-output#png
-        quality: 80,
+        quality: 80
       },
       jpeg: {
         // https://sharp.pixelplumbing.com/api-output#jpeg
-        quality: 80,
+        quality: 80
       },
       jpg: {
         // https://sharp.pixelplumbing.com/api-output#jpeg
-        quality: 80,
+        quality: 80
       },
       tiff: {
         // https://sharp.pixelplumbing.com/api-output#tiff
-        quality: 80,
+        quality: 80
       },
       // gif does not support lossless compression
       // https://sharp.pixelplumbing.com/api-output#gif
       gif: {},
       webp: {
         // https://sharp.pixelplumbing.com/api-output#webp
-        lossless: true,
+        lossless: true
       },
       avif: {
         // https://sharp.pixelplumbing.com/api-output#avif
-        lossless: true,
+        lossless: true
       },
       cache: false,
-      cacheLocation: undefined,
-    }),
-  ],
+      cacheLocation: undefined
+    })
+  ]
 });
