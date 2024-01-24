@@ -12,7 +12,7 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     'react-refresh/only-export-components': [
-      'warn',
+      'off',
       { allowConstantExport: true }
     ],
     '@typescript-eslint/no-unused-vars': 'warn',
@@ -26,13 +26,6 @@ module.exports = {
     'no-multiple-empty-lines': 1,
     'space-before-blocks': ['error', 'always'],
     'object-curly-spacing': [1, 'always'],
-    indent: [
-      'warn',
-      2,
-      {
-        SwitchCase: 1
-      }
-    ],
     semi: [1, 'always'],
     quotes: ['error', 'single'],
     'array-bracket-spacing': 1,

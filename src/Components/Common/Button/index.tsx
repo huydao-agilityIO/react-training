@@ -1,35 +1,23 @@
-import { ReactNode } from 'react';
-import { Button, ButtonProps } from '@chakra-ui/react';
+import { ReactNode, memo } from 'react';
+import { ButtonProps, Button } from '@chakra-ui/react';
 
 interface ButtonComponentProps extends ButtonProps {
   children: ReactNode;
-  isDisabled?: boolean;
+  variants?: 'primary' | 'secondary';
+  sizes?: 'sm' | 'md';
 }
 
 const ButtonComponent = ({
   children,
-  isDisabled,
+  variants = 'primary',
+  sizes = 'sm',
   ...props
 }: ButtonComponentProps) => {
-  // Style hover of button enabled
-  const hoverStyle = {
-    ...(!isDisabled && {
-      _hover: {
-        background: '#ffffff',
-        borderColor: '#313f5a',
-        color: '#2daab8'
-      }
-    }),
-    _disabled: {
-      cursor: 'not-allowed',
-      opacity: 0.5
-    }
-  };
-
   return (
-    <Button {...props} isDisabled={isDisabled} {...hoverStyle}>
+    <Button variant={variants} size={sizes} {...props}>
       {children}
     </Button>
   );
 };
-export default ButtonComponent;
+
+export default memo(ButtonComponent);

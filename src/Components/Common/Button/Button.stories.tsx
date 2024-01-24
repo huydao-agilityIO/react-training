@@ -13,17 +13,24 @@ const meta: Meta<typeof Button> = {
   tags: ['autodocs'],
   args: {
     type: 'button',
-    cursor: 'pointer',
-    paddingX: 10,
-    paddingY: 5,
-    borderRadius: 5,
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: '#2daab8',
-    color: '#ffffff',
-    background: '#2daab8',
-    disabled: false,
+    sizes: 'sm',
+    isDisabled: false,
+    isLoading: false,
     onClick: () => alert('Active')
+  },
+  argTypes: {
+    variant: {
+      options: ['primary', 'secondary'],
+      control: { type: 'inline-radio' }
+    },
+    sizes: {
+      options: ['sm', 'md'],
+      control: { type: 'inline-radio' }
+    },
+    type: {
+      options: ['submit', 'button', 'reset'],
+      control: { type: 'inline-radio' }
+    }
   }
 };
 
@@ -32,14 +39,31 @@ type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
   args: {
-    children: 'Primary',
-    isDisabled: false
+    type: 'submit',
+    variant: 'primary',
+    children: 'Primary'
+  }
+};
+
+export const Secondary: Story = {
+  args: {
+    variant: 'secondary',
+    children: 'Secondary'
   }
 };
 
 export const Disabled: Story = {
   args: {
-    isDisabled: true,
-    children: 'Disabled'
+    variant: 'primary',
+    children: 'Disabled',
+    isDisabled: true
+  }
+};
+
+export const Loading: Story = {
+  args: {
+    variant: 'primary',
+    children: 'Loading',
+    isLoading: true
   }
 };

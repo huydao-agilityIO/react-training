@@ -19,11 +19,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "baseUrl": "./src",
 
     // TODO: Update later
     "paths": {
-      "@shared": ["./src"],
-      "@shared/App": ["./src/App.tsx"]
+      "@shared/*": ["*"]
     }
   },
   "include": ["src", "./jest-setup.ts"],

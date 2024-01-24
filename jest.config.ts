@@ -5,7 +5,7 @@ export default {
   moduleDirectories: ['node_modules', 'src'],
   moduleNameMapper: {
     '@constants': '<rootDir>/src/constants/index.ts',
-    '/^(.*)/': '<rootDir>/src/$1',
+    '^@shared(.*)$': '<rootDir>/src/$1',
     '\\.(css|svg|jpg)$': 'identity-obj-proxy'
   },
   coverageThreshold: {
