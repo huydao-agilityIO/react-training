@@ -2,7 +2,7 @@
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Button from './index';
+import { Button } from '@chakra-ui/react';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Common/Button',
@@ -13,7 +13,7 @@ const meta: Meta<typeof Button> = {
   tags: ['autodocs'],
   args: {
     type: 'button',
-    sizes: 'sm',
+    size: 'sm',
     isDisabled: false,
     isLoading: false,
     onClick: () => alert('Active')
@@ -23,7 +23,7 @@ const meta: Meta<typeof Button> = {
       options: ['primary', 'secondary'],
       control: { type: 'inline-radio' }
     },
-    sizes: {
+    size: {
       options: ['sm', 'md'],
       control: { type: 'inline-radio' }
     },

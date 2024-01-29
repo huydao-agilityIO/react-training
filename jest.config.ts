@@ -1,7 +1,7 @@
 export default {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['<rootDir>/jest-setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/setupTest/index.tsx'],
   moduleDirectories: ['node_modules', 'src'],
   moduleNameMapper: {
     '@constants': '<rootDir>/src/constants/index.ts',

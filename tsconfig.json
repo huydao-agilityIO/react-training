@@ -26,6 +26,6 @@
       "@shared/*": ["*"]
     }
   },
-  "include": ["src", "./jest-setup.ts"],
+  "include": ["src", "./setupTest/index.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -12,6 +12,7 @@ export const spacing = {
     5: '20px',
     6: '24px',
     7: '28px',
+    7.5: '30px',
     8: '32px',
     9: '36px',
     10: '40px',
@@ -24,6 +25,7 @@ export const spacing = {
     24: '96px',
     25: '100px',
     28: '112px',
+    29.5: '118px',
     32: '128px',
     36: '144px',
     40: '160px',
@@ -35,7 +37,7 @@ export const spacing = {
 
 export const sizes = {
   sizes: {
-    ...spacing,
+    ...spacing.space,
     max: 'max-content',
     min: 'min-content',
     full: '100%',
@@ -90,4 +92,8 @@ export const zIndices = {
   skipLink: 1600,
   toast: 1700,
   tooltip: 1800
+};
+
+export const shadows = {
+  sm: '0 7px 15px rgba(80,143,244,.15)'
 };

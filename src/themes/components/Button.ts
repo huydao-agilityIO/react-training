@@ -7,9 +7,9 @@ const primaryStyles = {
 };
 
 const secondaryStyles = {
-  bg: 'dark.100',
-  borderColor: 'dark.100',
-  color: 'light.200'
+  bg: 'light.200',
+  borderColor: 'light.200',
+  color: 'dark.200'
 };
 
 const buttonTheme = defineStyleConfig({
@@ -20,6 +20,10 @@ const buttonTheme = defineStyleConfig({
     textTransform: 'capitalize'
   },
   variants: {
+    default: {
+      bg: 'transparent',
+      border: 'none'
+    },
     primary: {
       ...primaryStyles,
       _hover: {
@@ -34,8 +38,9 @@ const buttonTheme = defineStyleConfig({
     secondary: {
       ...secondaryStyles,
       _hover: {
-        bg: 'light.200',
-        color: 'dark.100',
+        bg: 'primary.200',
+        borderColor: 'primary.200',
+        color: 'light.300',
         _disabled: {
           ...secondaryStyles
         }
