@@ -1,5 +1,9 @@
 import { extendTheme } from '@chakra-ui/react';
 
+// Font family
+import '@fontsource/poppins';
+import '@fontsource/rajdhani';
+
 // Bases
 import {
   breakpoints,
@@ -8,22 +12,29 @@ import {
   sizes,
   spacing,
   typographies,
-  zIndices
+  zIndices,
+  shadows
 } from './bases';
 
 // Components
-import { Button } from './components';
+import { Button, Heading, Text, Avatar, Spinner, Progress } from './components';
 
 const configThemes = extendTheme({
   breakpoints,
   colors,
   radius,
-  sizes,
-  spacing,
-  typographies,
+  shadows,
+  ...sizes,
+  ...spacing,
+  ...typographies,
   zIndices,
   components: {
-    Button
+    Button,
+    Heading,
+    Text,
+    Avatar,
+    Spinner,
+    Progress
   },
   styles: {
     global: {

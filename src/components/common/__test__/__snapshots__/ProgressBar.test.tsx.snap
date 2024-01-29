@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Component match snapshot with danger variant 1`] = `
+<DocumentFragment>
+  <div
+    class="chakra-stack css-nhuyyz"
+  >
+    <h2
+      class="chakra-heading css-1xon16b"
+    >
+      Danger
+    </h2>
+    <p
+      class="chakra-text css-1cujaad"
+    >
+      %
+    </p>
+    <div
+      class="css-971dyu"
+    >
+      <div
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="0"
+        class="css-d56dym"
+        role="progressbar"
+        style="width: 0%;"
+      />
+    </div>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</DocumentFragment>
+`;
+
+exports[`Button Component match snapshot with primary variant 1`] = `
+<DocumentFragment>
+  <div
+    class="chakra-stack css-nhuyyz"
+  >
+    <h2
+      class="chakra-heading css-1xon16b"
+    >
+      Default
+    </h2>
+    <p
+      class="chakra-text css-1vmm8s8"
+    >
+      %
+    </p>
+    <div
+      class="css-971dyu"
+    >
+      <div
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="0"
+        class="css-d737ol"
+        role="progressbar"
+        style="width: 0%;"
+      />
+    </div>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</DocumentFragment>
+`;
+
+exports[`Button Component match snapshot with success variant 1`] = `
+<DocumentFragment>
+  <div
+    class="chakra-stack css-nhuyyz"
+  >
+    <h2
+      class="chakra-heading css-1xon16b"
+    >
+      Success
+    </h2>
+    <p
+      class="chakra-text css-160sqmu"
+    >
+      %
+    </p>
+    <div
+      class="css-971dyu"
+    >
+      <div
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="0"
+        class="css-1eejryx"
+        role="progressbar"
+        style="width: 0%;"
+      />
+    </div>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</DocumentFragment>
+`;
+
+exports[`Button Component match snapshot with warning variant 1`] = `
+<DocumentFragment>
+  <div
+    class="chakra-stack css-nhuyyz"
+  >
+    <h2
+      class="chakra-heading css-1xon16b"
+    >
+      Warning
+    </h2>
+    <p
+      class="chakra-text css-ne6ooi"
+    >
+      %
+    </p>
+    <div
+      class="css-971dyu"
+    >
+      <div
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="0"
+        class="css-obqp8r"
+        role="progressbar"
+        style="width: 0%;"
+      />
+    </div>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</DocumentFragment>
+`;

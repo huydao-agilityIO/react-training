@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card Component renders correctly with props 1`] = `
+<DocumentFragment>
+  <div
+    class="chakra-card css-1nnsn8o"
+  >
+    <span
+      class="chakra-avatar css-2yxd85"
+    >
+      <div
+        aria-label="Lionel Messi"
+        class="chakra-avatar__initials css-1ebyn6"
+        role="img"
+      >
+        LM
+      </div>
+    </span>
+    <div
+      class="chakra-card__header css-old1by"
+    >
+      <h2
+        class="chakra-heading css-1cj8ah8"
+      >
+        Lionel Messi
+      </h2>
+    </div>
+    <div
+      class="chakra-card__body css-1830czf"
+    >
+      <p
+        class="chakra-text css-340eiw"
+      >
+        Doctor
+      </p>
+    </div>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</DocumentFragment>
+`;

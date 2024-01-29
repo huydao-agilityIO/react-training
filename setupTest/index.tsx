@@ -1,9 +1,18 @@
+import '@testing-library/jest-dom';
 import React from 'react';
 import * as jestFunc from '@testing-library/react';
 import { ChakraProvider } from '@chakra-ui/react';
 
+// Font family
+import '@fontsource/poppins';
+import '@fontsource/rajdhani';
+
+// Mock font
+jest.mock('@fontsource/poppins', () => ({}));
+jest.mock('@fontsource/rajdhani', () => ({}));
+
 // Themes
-import configThemes from '@shared/themes';
+import configThemes from '../src/themes';
 
 const customRender = <
   Q extends jestFunc.Queries = typeof jestFunc.queries,
@@ -27,5 +36,7 @@ const customRender = <
       );
     }
   });
+
+globalThis.testLibReactUtils = { ...jestFunc, render: customRender };
 
 export default { ...jestFunc, render: customRender };

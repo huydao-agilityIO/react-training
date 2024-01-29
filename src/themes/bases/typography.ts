@@ -1,7 +1,7 @@
 const typographies = {
   fonts: {
-    body: 'poppins,sans-serif',
-    heading: 'rajdhani,sans-serif'
+    body: 'Poppins,sans-serif',
+    heading: 'Rajdhani,sans-serif'
   },
   fontSizes: {
     xs: '12px',
