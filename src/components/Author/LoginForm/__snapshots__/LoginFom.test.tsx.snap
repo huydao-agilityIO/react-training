@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginForm renders correctly 1`] = `
+<div>
+  <div
+    class="chakra-stack css-1hg7tnx"
+  >
+    <div
+      class="chakra-container css-1s7vqq3"
+    >
+      <form
+        class="css-0"
+        id="loginFom"
+      >
+        <div
+          class="chakra-stack css-1e1otyl"
+        >
+          <div
+            class="chakra-stack css-rgfwhv"
+          >
+            <h2
+              class="chakra-heading css-tro5bq"
+            >
+              Log in
+            </h2>
+          </div>
+          <div
+            class="chakra-stack css-feqp41"
+          >
+            <div
+              class="chakra-stack css-9kwbnc"
+            >
+              <div
+                class="chakra-form-control css-1kxonj9"
+                role="group"
+              >
+                <input
+                  class="chakra-input css-16v8qx8"
+                  id="email"
+                  placeholder="Enter your email"
+                  type="email"
+                  value=""
+                />
+              </div>
+              <div
+                class="chakra-form-control css-1kxonj9"
+                role="group"
+              >
+                <input
+                  class="chakra-input css-16v8qx8"
+                  id="password"
+                  placeholder="Password"
+                  type="password"
+                  value=""
+                />
+              </div>
+              <button
+                class="chakra-button css-1lsg31x"
+                type="submit"
+              >
+                Log In
+              </button>
+            </div>
+            <div
+              class="chakra-stack css-12yeauu"
+            >
+              <p
+                class="chakra-text css-oi2y7z"
+              >
+                Need an account?
+                 
+                <a
+                  class="chakra-link css-jqihjn"
+                  href="/register"
+                >
+                  Sign Up
+                </a>
+              </p>
+              <a
+                class="chakra-link css-3ctcoe"
+                href="/"
+              >
+                Forget Password?
+              </a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</div>
+`;

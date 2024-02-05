@@ -17,7 +17,15 @@ import {
 } from './bases';
 
 // Components
-import { Button, Heading, Text, Avatar, Spinner, Progress } from './components';
+import {
+  Button,
+  Heading,
+  Text,
+  Avatar,
+  Spinner,
+  Progress,
+  InputField
+} from './components';
 
 const configThemes = extendTheme({
   breakpoints,
@@ -34,7 +42,8 @@ const configThemes = extendTheme({
     Text,
     Avatar,
     Spinner,
-    Progress
+    Progress,
+    Input: InputField
   },
   styles: {
     global: {

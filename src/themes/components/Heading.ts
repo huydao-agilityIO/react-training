@@ -11,6 +11,9 @@ const headingTheme = defineStyleConfig({
     },
     secondary: {
       color: 'secondary.400'
+    },
+    helper: {
+      color: 'dark.300'
     }
   },
   sizes: {
