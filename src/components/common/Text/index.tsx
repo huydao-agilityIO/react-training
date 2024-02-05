@@ -25,6 +25,7 @@ export const TextLink = memo(
       {children}{' '}
       <Link
         color="secondary.400"
+        fontWeight="medium"
         _hover={{ textDecoration: 'none' }}
         as={LinkRouter}
         to={pathRouter}>

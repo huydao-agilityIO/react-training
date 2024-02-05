@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RegisterForm renders correctly 1`] = `
+<div>
+  <div
+    class="chakra-stack css-1hg7tnx"
+  >
+    <div
+      class="chakra-container css-1s7vqq3"
+    >
+      <form
+        class="css-0"
+        id="registerFom"
+      >
+        <div
+          class="chakra-stack css-1e1otyl"
+        >
+          <div
+            class="chakra-stack css-rgfwhv"
+          >
+            <h2
+              class="chakra-heading css-tro5bq"
+            >
+              Register
+            </h2>
+          </div>
+          <div
+            class="chakra-stack css-feqp41"
+          >
+            <div
+              class="chakra-stack css-9kwbnc"
+            >
+              <div
+                class="chakra-stack css-10t90fk"
+              >
+                <div
+                  class="chakra-form-control css-1kxonj9"
+                  role="group"
+                >
+                  <input
+                    class="chakra-input css-16v8qx8"
+                    id="firstName"
+                    placeholder="First Name"
+                    type="text"
+                    value=""
+                  />
+                </div>
+                <div
+                  class="chakra-form-control css-1kxonj9"
+                  role="group"
+                >
+                  <input
+                    class="chakra-input css-16v8qx8"
+                    id="lastName"
+                    placeholder="Last Name"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+              <div
+                class="chakra-form-control css-1kxonj9"
+                role="group"
+              >
+                <input
+                  class="chakra-input css-16v8qx8"
+                  id="email"
+                  placeholder="Enter your email"
+                  type="email"
+                  value=""
+                />
+              </div>
+              <div
+                class="chakra-form-control css-1kxonj9"
+                role="group"
+              >
+                <input
+                  class="chakra-input css-16v8qx8"
+                  id="password"
+                  placeholder="Password"
+                  type="password"
+                  value=""
+                />
+              </div>
+              <label
+                class="chakra-checkbox css-162ix9b"
+              >
+                <input
+                  class="chakra-checkbox__input"
+                  style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                  type="checkbox"
+                  value=""
+                />
+                <span
+                  aria-hidden="true"
+                  class="chakra-checkbox__control css-ca8wb8"
+                />
+                <span
+                  class="chakra-checkbox__label css-r90m2q"
+                >
+                  Keep me up to date
+                </span>
+              </label>
+              <button
+                class="chakra-button css-1lsg31x"
+                type="submit"
+              >
+                Sign up
+              </button>
+            </div>
+            <div
+              class="chakra-stack css-12yeauu"
+            >
+              <p
+                class="chakra-text css-oi2y7z"
+              >
+                Need an account?
+                 
+                <a
+                  class="chakra-link css-jqihjn"
+                  href="/"
+                >
+                  Log in
+                </a>
+              </p>
+              <a
+                class="chakra-link css-3ctcoe"
+                href="/"
+              >
+                Forget Password?
+              </a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</div>
+`;
