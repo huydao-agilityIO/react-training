@@ -11,6 +11,13 @@ import '@fontsource/rajdhani';
 jest.mock('@fontsource/poppins', () => ({}));
 jest.mock('@fontsource/rajdhani', () => ({}));
 
+jest.mock('dayjs', () => ({
+  __esModule: true,
+  default: jest.fn(() => ({
+    format: jest.fn()
+  }))
+}));
+
 // Themes
 import configThemes from '../src/themes';
 

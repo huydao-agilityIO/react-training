@@ -74,6 +74,7 @@ export const radius = {
     xl: '12px',
     '2xl': '16px',
     '3xl': '24px',
+    '4xl': '30px',
     full: '9999px'
   }
 };
