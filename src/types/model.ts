@@ -6,3 +6,14 @@ export type Authentication = {
   avatarURL: string;
   password: string;
 };
+
+export type Patient = {
+  id: string;
+  urlAvatar: string;
+  firstName: string;
+  lastName: string;
+  department: string;
+  appointmentDate: string;
+  serialNumber: string;
+  amount: number;
+};
