@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sidebar component Match snapshot for sidebar 1`] = `
+<div>
+  <div
+    class="chakra-stack css-8g8ihq"
+  >
+    <div
+      class="chakra-container css-174qhdx"
+    >
+      <div
+        class="css-7i9x98"
+      >
+        <img
+          alt="urlBrand"
+          class="chakra-image css-0"
+          src=""
+        />
+      </div>
+      <ul
+        class="css-155za0w"
+        role="list"
+      >
+        <li
+          class="css-e5uuyb"
+        >
+          <h2
+            class="chakra-heading css-1p6fk1z"
+          >
+            Dashboard
+          </h2>
+          <div
+            class="chakra-stack css-dllez"
+          >
+            <svg
+              color="#a5adc6"
+              height="20px"
+              viewBox="0 0 24 24"
+              width="20px"
+            >
+              <path
+                d="M12 2.1 1 12h3v9h6v-7h4v7h6v-9h3L12 2.1z"
+                fill="currentColor"
+              />
+            </svg>
+            <a
+              class="chakra-link css-yud0dq"
+              href="/"
+            >
+              Dashboard
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</div>
+`;
