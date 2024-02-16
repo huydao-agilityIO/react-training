@@ -21,6 +21,19 @@ jest.mock('dayjs', () => ({
 // Themes
 import configThemes from '../src/themes';
 
+jest.mock('@chakra-ui/react', () => ({
+  ...jest.requireActual('@chakra-ui/react'),
+  useDisclosure: jest.fn()
+}));
+
+window.matchMedia = jest.fn().mockImplementation((query) => ({
+  matches: true,
+  media: query,
+  onchange: null,
+  addListener: jest.fn(),
+  removeListener: jest.fn()
+}));
+
 const customRender = <
   Q extends jestFunc.Queries = typeof jestFunc.queries,
   Container extends Element | DocumentFragment = HTMLElement,

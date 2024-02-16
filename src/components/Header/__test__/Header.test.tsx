@@ -4,19 +4,6 @@ import { INVALID_INFO } from '@shared/constants';
 // Components
 import { Header } from '@shared/components';
 
-jest.mock('@chakra-ui/react', () => ({
-  ...jest.requireActual('@chakra-ui/react'),
-  useDisclosure: jest.fn()
-}));
-
-window.matchMedia = jest.fn().mockImplementation((query) => ({
-  matches: true,
-  media: query,
-  onchange: null,
-  addListener: jest.fn(),
-  removeListener: jest.fn()
-}));
-
 describe('Header', () => {
   it('Match snapshot ', () => {
     const onSearchMock = jest.fn();
