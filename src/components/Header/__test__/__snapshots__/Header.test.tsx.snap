@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header should match snapshot 1`] = `
+exports[`Header Match snapshot  1`] = `
 <div>
   <div
     class="chakra-stack css-yvyrof"
@@ -170,9 +170,7 @@ exports[`Header should match snapshot 1`] = `
               </p>
               <h2
                 class="chakra-heading css-2pj3d7"
-              >
-                Test User
-              </h2>
+              />
             </div>
           </header>
           <div

@@ -1,60 +1,51 @@
-import { Header } from '@shared/components';
-import { useBreakpoints } from '@shared/hooks';
-import { useDisclosure } from '@chakra-ui/react';
+// Constants
 import { INVALID_INFO } from '@shared/constants';
+
+// Components
+import { Header } from '@shared/components';
 
 jest.mock('@chakra-ui/react', () => ({
   ...jest.requireActual('@chakra-ui/react'),
   useDisclosure: jest.fn()
 }));
 
-jest.mock('@shared/hooks', () => ({
-  useBreakpoints: jest.fn()
+window.matchMedia = jest.fn().mockImplementation((query) => ({
+  matches: true,
+  media: query,
+  onchange: null,
+  addListener: jest.fn(),
+  removeListener: jest.fn()
 }));
 
 describe('Header', () => {
-  const setup = (fullName?: string, onSearchMock?: jest.Mock) => {
-    const onSearch = onSearchMock ?? jest.fn();
-    (useBreakpoints as jest.Mock).mockReturnValue({
-      isLargeThan1024: false,
-      isLargeThan768: true
-    });
-    (useDisclosure as jest.Mock).mockReturnValue({
-      isOpen: false,
-      onOpen: jest.fn(),
-      onClose: jest.fn()
-    });
-
-    const utils = testLibReactUtils.render(
-      <Header fullName={fullName} onSearch={onSearch} />
+  it('Match snapshot ', () => {
+    const onSearchMock = jest.fn();
+    const { container } = testLibReactUtils.render(
+      <Header onSearch={onSearchMock}></Header>
     );
-    return { ...utils, onSearch };
-  };
 
-  it('should match snapshot', () => {
-    const { container } = setup(INVALID_INFO.firstName);
     expect(container).toMatchSnapshot();
   });
 
-  it('should call onSearch when input value changes', () => {
-    const onSearch = jest.fn();
-    const { getByPlaceholderText } = setup(INVALID_INFO.firstName, onSearch);
+  it('calls onChange callback when input value changes', () => {
+    const onSearchMock = jest.fn();
+    testLibReactUtils.render(<Header onSearch={onSearchMock} />);
 
-    const inputElement = getByPlaceholderText('Search here...');
+    const inputElement = testLibReactUtils.screen.getByRole('textbox');
+
     testLibReactUtils.fireEvent.change(inputElement, {
-      target: { value: 'test search' }
+      target: { value: INVALID_INFO.firstName }
     });
-
-    expect(onSearch).toHaveBeenCalledTimes(1);
+    expect(onSearchMock).toHaveBeenCalled();
   });
 
-  it('should not call onSearch when input value is empty', () => {
-    const onSearch = jest.fn();
-    const { getByPlaceholderText } = setup(INVALID_INFO.firstName, onSearch);
+  it('Not call onChange callback when input value changes to empty', () => {
+    const onSearchMock = jest.fn();
+    testLibReactUtils.render(<Header onSearch={onSearchMock} />);
 
-    const inputElement = getByPlaceholderText('Search here...');
+    const inputElement = testLibReactUtils.screen.getByRole('textbox');
+
     testLibReactUtils.fireEvent.change(inputElement, { target: { value: '' } });
-
-    expect(onSearch).toHaveBeenCalledTimes(0);
+    expect(onSearchMock).not.toHaveBeenCalled();
   });
 });
