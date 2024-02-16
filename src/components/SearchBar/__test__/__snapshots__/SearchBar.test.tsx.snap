@@ -7,7 +7,7 @@ exports[`SearchBar component Match snapshot search bar with left icon 1`] = `
     data-group="true"
   >
     <div
-      class="chakra-input__left-element css-14hjc6n"
+      class="chakra-input__left-element css-un1w24"
     >
       <svg
         color="#a5adc6"
@@ -22,7 +22,7 @@ exports[`SearchBar component Match snapshot search bar with left icon 1`] = `
       </svg>
     </div>
     <input
-      class="chakra-input css-6fwqyh"
+      class="chakra-input css-3lltm1"
       placeholder="Search here..."
       type="text"
     />
@@ -41,12 +41,12 @@ exports[`SearchBar component Match snapshot search bar with right icon 1`] = `
     data-group="true"
   >
     <input
-      class="chakra-input css-cishcb"
+      class="chakra-input css-4g9af5"
       placeholder="Search here..."
       type="text"
     />
     <div
-      class="chakra-input__right-element css-rw3m41"
+      class="chakra-input__right-element css-6b1nl2"
     >
       <svg
         color="#a5adc6"

@@ -1,4 +1,10 @@
-import { HStack, IconButton, Show, useDisclosure } from '@chakra-ui/react';
+import {
+  HStack,
+  IconButton,
+  Show,
+  VStack,
+  useDisclosure
+} from '@chakra-ui/react';
 
 // Themes
 import { breakpoints } from '@shared/themes/bases';
@@ -20,40 +26,47 @@ interface HeaderProps {
 }
 
 const Header = ({ fullName, onSearch }: HeaderProps) => {
-  const { lg } = breakpoints || {};
+  const { md, lg } = breakpoints || {};
   const { isOpen, onOpen, onClose } = useDisclosure() || {};
 
   return (
-    <HStack
-      w="full"
-      justifyContent="space-between"
-      bg="light.300"
-      p={{ sm: 5, md: 7.5 }}>
-      <HStack>
-        <Show below={`${lg}px`}>
-          <IconButton
-            variant="default"
-            aria-label="show-sidebar"
-            icon={<MenuIcon />}
+    <VStack p={{ base: 5, md: 7.5 }} bg="light.300">
+      <HStack w="full" justifyContent="space-between">
+        <HStack>
+          <Show below={`${lg}px`}>
+            <IconButton
+              variant="default"
+              aria-label="show-sidebar"
+              icon={<MenuIcon />}
+            />
+          </Show>
+          <Show above={`${md}px`}>
+            <SearchBar
+              placeholder="Search here..."
+              leftContent={<SearchIcon />}
+              onChange={onSearch}
+            />
+          </Show>
+        </HStack>
+        <HStack spacing={{ base: 2, md: 7.5 }}>
+          <NotificationIcon />
+          <MessageIcon />
+          <Dropdown
+            fullName={fullName}
+            isOpen={isOpen}
+            onMouseEnter={onOpen}
+            onMouseLeave={onClose}
           />
-        </Show>
+        </HStack>
+      </HStack>
+      <Show below={`${md}px`}>
         <SearchBar
           placeholder="Search here..."
           leftContent={<SearchIcon />}
           onChange={onSearch}
         />
-      </HStack>
-      <HStack spacing={{ sm: 2, md: 7.5 }}>
-        <NotificationIcon />
-        <MessageIcon />
-        <Dropdown
-          fullName={fullName}
-          isOpen={isOpen}
-          onMouseEnter={onOpen}
-          onMouseLeave={onClose}
-        />
-      </HStack>
-    </HStack>
+      </Show>
+    </VStack>
   );
 };
 

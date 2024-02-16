@@ -18,9 +18,9 @@ describe('Header', () => {
     const onSearchMock = jest.fn();
     testLibReactUtils.render(<Header onSearch={onSearchMock} />);
 
-    const inputElement = testLibReactUtils.screen.getByRole('textbox');
+    const inputElement = testLibReactUtils.screen.getAllByRole('textbox');
 
-    testLibReactUtils.fireEvent.change(inputElement, {
+    testLibReactUtils.fireEvent.change(inputElement[0], {
       target: { value: INVALID_INFO.firstName }
     });
     expect(onSearchMock).toHaveBeenCalled();
@@ -30,9 +30,11 @@ describe('Header', () => {
     const onSearchMock = jest.fn();
     testLibReactUtils.render(<Header onSearch={onSearchMock} />);
 
-    const inputElement = testLibReactUtils.screen.getByRole('textbox');
+    const inputElement = testLibReactUtils.screen.getAllByRole('textbox');
 
-    testLibReactUtils.fireEvent.change(inputElement, { target: { value: '' } });
+    testLibReactUtils.fireEvent.change(inputElement[0], {
+      target: { value: '' }
+    });
     expect(onSearchMock).not.toHaveBeenCalled();
   });
 });
