@@ -1,7 +1,7 @@
 import { HStack, IconButton, Show, useDisclosure } from '@chakra-ui/react';
 
-// Constants
-import { breakpoints } from '@shared/constants';
+// Themes
+import { breakpoints } from '@shared/themes/bases';
 
 // Svg
 import {
@@ -30,7 +30,7 @@ const Header = ({ fullName, onSearch }: HeaderProps) => {
       bg="light.300"
       p={{ sm: 5, md: 7.5 }}>
       <HStack>
-        <Show below={lg}>
+        <Show below={`${lg}px`}>
           <IconButton
             variant="default"
             aria-label="show-sidebar"
