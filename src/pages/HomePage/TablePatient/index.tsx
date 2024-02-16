@@ -14,8 +14,11 @@ import {
   formatFullName
 } from '@shared/utils';
 
+// Svg
+import { EllipsisVertical } from '@shared/SVG';
+
 // Components
-import { DataTable, EllipsisVertical, TextHelper } from '@shared/components';
+import { DataTable, TextHelper } from '@shared/components';
 
 interface TablePatientProps {
   data: Patient[];

@@ -37,7 +37,7 @@ describe('RegisterForm', () => {
     );
 
     testLibReactUtils.fireEvent.change(getByPlaceholderText('First Name'), {
-      target: { value: VALID_INFO.name }
+      target: { value: VALID_INFO.firstName }
     });
     testLibReactUtils.fireEvent.change(
       getByPlaceholderText('Enter your email'),

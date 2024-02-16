@@ -32,7 +32,8 @@ const colors = {
     100: '#f4f7fc',
     200: '#eff1f7',
     250: '#f7faff',
-    300: '#ffffff'
+    300: '#ffffff',
+    350: '#f5f7fd'
   },
   dark: {
     50: '#707070',
