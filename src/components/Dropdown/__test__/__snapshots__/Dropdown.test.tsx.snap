@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown matches the snapshot 1`] = `
+<div>
+  <button
+    aria-controls="popover-content-:r1:"
+    aria-expanded="true"
+    aria-haspopup="dialog"
+    aria-label="show-dropdown"
+    class="chakra-button css-1p6akhc"
+    id="popover-trigger-:r1:"
+    type="button"
+  >
+    <span
+      aria-hidden="true"
+      class="chakra-avatar css-f3ttsq"
+      focusable="false"
+    >
+      <svg
+        aria-label=" avatar"
+        class="chakra-avatar__svg css-16ite8i"
+        role="img"
+        viewBox="0 0 128 128"
+      >
+        <path
+          d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+          fill="currentColor"
+        />
+        <path
+          d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+          fill="currentColor"
+        />
+      </svg>
+    </span>
+  </button>
+  <div
+    class="chakra-popover__popper css-1qq679y"
+    data-popper-escaped=""
+    data-popper-placement="bottom"
+    data-popper-reference-hidden=""
+    style="visibility: visible; min-width: max-content; inset: 0 auto auto 0; --popper-transform-origin: top center; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 8px);"
+  >
+    <section
+      aria-describedby="popover-body-:r1:"
+      aria-labelledby="popover-header-:r1:"
+      class="chakra-popover__content css-n8n3bl"
+      id="popover-content-:r1:"
+      role="dialog"
+      style="transform-origin: var(--popper-transform-origin); opacity: 1; visibility: visible; transform: none;"
+      tabindex="-1"
+    >
+      <div
+        class="chakra-popover__arrow-positioner css-0"
+        data-popper-arrow=""
+        style="z-index: -1; --popper-arrow-size-half: calc(var(--popper-arrow-size, 8px) / 2 - 1px); --popper-arrow-offset: calc(var(--popper-arrow-size-half) * -1); position: absolute; left: 0px; transform: translate(8px, 0px);"
+      >
+        <div
+          class="chakra-popover__arrow css-9gpjr2"
+          data-popper-arrow-inner=""
+          style="--popper-arrow-default-shadow: -1px -1px 0px 0 var(--popper-arrow-shadow-color); transform: rotate(45deg); top: 0px; left: 0px; width: 100%; height: 100%; position: absolute; z-index: inherit; box-shadow: var(--popper-arrow-shadow, var(--popper-arrow-default-shadow));"
+        />
+      </div>
+      <header
+        class="chakra-popover__header css-1t6b1jw"
+        id="popover-header-:r1:"
+      >
+        <div
+          class="chakra-stack css-14prjgc"
+        >
+          <p
+            class="chakra-text css-czj0gx"
+          >
+            management
+          </p>
+          <h2
+            class="chakra-heading css-2pj3d7"
+          >
+            Lionel Messi
+          </h2>
+        </div>
+      </header>
+      <div
+        class="chakra-popover__body css-1ews2c8"
+        id="popover-body-:r1:"
+      >
+        <div
+          class="chakra-stack css-scpwb"
+        >
+          <button
+            class="chakra-button css-1l9735s"
+            type="button"
+          >
+            Log out
+            <span
+              class="chakra-button__icon css-1hzyiq5"
+            >
+              <svg
+                aria-hidden="true"
+                color="#a5adc6"
+                focusable="false"
+                height="12px"
+                viewBox="0 0 512 512"
+                width="12px"
+              >
+                <path
+                  d="M18 32.8c-1.9.9-4.5 3.2-5.7 5.1L10 41.3v215.1c0 211.6 0 215.2 2 218.3 2 3.3 5.4 5.5 10.3 6.7 4 1 11.2-2.5 13.7-6.6 2-3.3 2-4.2 2-219V40.2l-2.7-3.3c-4.8-5.7-11.2-7.2-17.3-4.1zM188.5 179.4c-1.6.8-18.4 16.7-37.2 35.3-37.1 36.6-37 36.6-34.4 44.5 1.7 5.1 69.5 72.4 73.8 73.3 4.6.9 9.7-1 13.3-5.1 2.4-2.8 3-4.4 3-8 0-2.5-.5-5.5-1.1-6.7-.5-1.2-10.3-11.3-21.7-22.4l-20.7-20.2 163-.1c158.5 0 163.1-.1 167.2-2 10.1-4.5 11.3-18.7 2-23.7-3-1.7-12.9-1.8-167.6-2.3l-164.3-.5 20.6-19.9c11.4-11 21.4-21.2 22.2-22.7 3.1-6.1.8-14.7-5-18.4-3.5-2.3-9.5-2.8-13.1-1.1z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</div>
+`;

@@ -30,7 +30,7 @@ import {
 const configThemes = extendTheme({
   breakpoints,
   colors,
-  radius,
+  ...radius,
   shadows,
   ...sizes,
   ...spacing,

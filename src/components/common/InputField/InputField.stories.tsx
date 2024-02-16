@@ -50,6 +50,6 @@ export const FieldDisabled: Story = {
   args: {
     variant: 'disabled',
     isDisabled: true,
-    value: VALID_INFO.name
+    value: VALID_INFO.firstName
   }
 };
