@@ -20,11 +20,15 @@ interface HeaderProps {
 }
 
 const Header = ({ fullName, onSearch }: HeaderProps) => {
-  const { md, lg } = breakpoints || {};
+  const { lg } = breakpoints || {};
   const { isOpen, onOpen, onClose } = useDisclosure() || {};
 
   return (
-    <HStack w="full" justifyContent="space-between" bg="light.300" p={7.5}>
+    <HStack
+      w="full"
+      justifyContent="space-between"
+      bg="light.300"
+      p={{ sm: 5, md: 7.5 }}>
       <HStack>
         <Show below={lg}>
           <IconButton
@@ -33,15 +37,13 @@ const Header = ({ fullName, onSearch }: HeaderProps) => {
             icon={<MenuIcon />}
           />
         </Show>
-        <Show above={md}>
-          <SearchBar
-            placeholder="Search here..."
-            leftContent={<SearchIcon />}
-            onChange={onSearch}
-          />
-        </Show>
+        <SearchBar
+          placeholder="Search here..."
+          leftContent={<SearchIcon />}
+          onChange={onSearch}
+        />
       </HStack>
-      <HStack spacing={7.5}>
+      <HStack spacing={{ sm: 2, md: 7.5 }}>
         <NotificationIcon />
         <MessageIcon />
         <Dropdown

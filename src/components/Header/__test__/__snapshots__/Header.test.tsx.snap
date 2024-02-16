@@ -3,7 +3,7 @@
 exports[`Header Match snapshot  1`] = `
 <div>
   <div
-    class="chakra-stack css-yvyrof"
+    class="chakra-stack css-u18k90"
   >
     <div
       class="chakra-stack css-1igwmid"
@@ -32,7 +32,7 @@ exports[`Header Match snapshot  1`] = `
         data-group="true"
       >
         <div
-          class="chakra-input__left-element css-1c56fir"
+          class="chakra-input__left-element css-14hjc6n"
         >
           <svg
             color="#a5adc6"
@@ -47,14 +47,14 @@ exports[`Header Match snapshot  1`] = `
           </svg>
         </div>
         <input
-          class="chakra-input css-1s7rccv"
+          class="chakra-input css-6fwqyh"
           placeholder="Search here..."
           type="text"
         />
       </div>
     </div>
     <div
-      class="chakra-stack css-9fp2ek"
+      class="chakra-stack css-3r8r76"
     >
       <svg
         color="#929bb5"
