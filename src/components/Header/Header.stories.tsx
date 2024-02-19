@@ -1,6 +1,7 @@
 // Header.stories.ts|tsx
 
 import type { Meta, StoryObj } from '@storybook/react';
+import { MemoryRouter } from 'react-router-dom';
 
 // Utils
 import { formatFullName } from '@shared/utils';
@@ -17,7 +18,14 @@ const meta: Meta<typeof Header> = {
   parameters: {
     layout: 'centered'
   },
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  decorators: [
+    (Story) => (
+      <MemoryRouter>
+        <Story />
+      </MemoryRouter>
+    )
+  ]
 };
 
 export default meta;

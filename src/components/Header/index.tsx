@@ -1,4 +1,9 @@
 import {
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerOverlay,
   HStack,
   IconButton,
   Show,
@@ -6,8 +11,14 @@ import {
   useDisclosure
 } from '@chakra-ui/react';
 
+// Images
+import urlBrand from '@shared/assets/images/brand.jpg';
+
 // Themes
 import { breakpoints } from '@shared/themes/bases';
+
+// Constants
+import { SIDEBAR_MAPPING } from '@shared/constants';
 
 // Svg
 import {
@@ -18,7 +29,7 @@ import {
 } from '@shared/SVG';
 
 // Components
-import { Dropdown, SearchBar } from '@shared/components';
+import { Dropdown, SearchBar, Sidebar } from '@shared/components';
 
 interface HeaderProps {
   fullName?: string;
@@ -27,7 +38,16 @@ interface HeaderProps {
 
 const Header = ({ fullName, onSearch }: HeaderProps) => {
   const { md, lg } = breakpoints || {};
-  const { isOpen, onOpen, onClose } = useDisclosure() || {};
+  const {
+    isOpen: isOpenDropdown,
+    onOpen: onOpenDropdown,
+    onClose: onCloseDropdown
+  } = useDisclosure() || {};
+  const {
+    isOpen: isOpenSideBar,
+    onOpen: onOpenSideBar,
+    onClose: onCloseSideBar
+  } = useDisclosure() || {};
 
   return (
     <VStack p={{ base: 5, md: 7.5 }} bg="light.300">
@@ -38,7 +58,23 @@ const Header = ({ fullName, onSearch }: HeaderProps) => {
               variant="default"
               aria-label="show-sidebar"
               icon={<MenuIcon />}
+              onClick={onOpenSideBar}
             />
+            <Drawer
+              isOpen={isOpenSideBar}
+              placement="left"
+              onClose={onCloseSideBar}>
+              <DrawerOverlay />
+              <DrawerContent>
+                <DrawerCloseButton />
+                <DrawerBody>
+                  <Sidebar
+                    sidebarMapping={SIDEBAR_MAPPING}
+                    urlBrand={urlBrand}
+                  />
+                </DrawerBody>
+              </DrawerContent>
+            </Drawer>
           </Show>
           <Show above={`${md}px`}>
             <SearchBar
@@ -53,9 +89,9 @@ const Header = ({ fullName, onSearch }: HeaderProps) => {
           <MessageIcon />
           <Dropdown
             fullName={fullName}
-            isOpen={isOpen}
-            onMouseEnter={onOpen}
-            onMouseLeave={onClose}
+            isOpen={isOpenDropdown}
+            onMouseEnter={onOpenDropdown}
+            onMouseLeave={onCloseDropdown}
           />
         </HStack>
       </HStack>
