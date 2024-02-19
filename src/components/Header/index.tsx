@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 
 // Images
-import urlBrand from '@shared/assets/images/brand.jpg';
+import urlBrand from '@shared/assets/images/brand.png';
 
 // Themes
 import { breakpoints } from '@shared/themes/bases';

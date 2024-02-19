@@ -11,7 +11,7 @@ import '@fontsource/rajdhani';
 jest.mock('@fontsource/poppins', () => ({}));
 jest.mock('@fontsource/rajdhani', () => ({}));
 
-jest.mock('@shared/assets/images/brand.jpg', () => ({}));
+jest.mock('@shared/assets/images/brand.png', () => ({}));
 
 jest.mock('dayjs', () => ({
   __esModule: true,
