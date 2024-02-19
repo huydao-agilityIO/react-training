@@ -25,6 +25,7 @@ const colors = {
   },
   danger: {
     100: '#ca737b',
+    150: '#ff6359',
     200: '#dc3545'
   },
   light: {

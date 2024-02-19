@@ -11,6 +11,8 @@ import '@fontsource/rajdhani';
 jest.mock('@fontsource/poppins', () => ({}));
 jest.mock('@fontsource/rajdhani', () => ({}));
 
+jest.mock('@shared/assets/images/brand.png', () => ({}));
+
 jest.mock('dayjs', () => ({
   __esModule: true,
   default: jest.fn(() => ({
@@ -20,6 +22,19 @@ jest.mock('dayjs', () => ({
 
 // Themes
 import configThemes from '../src/themes';
+
+jest.mock('@chakra-ui/react', () => ({
+  ...jest.requireActual('@chakra-ui/react'),
+  useDisclosure: jest.fn()
+}));
+
+window.matchMedia = jest.fn().mockImplementation((query) => ({
+  matches: true,
+  media: query,
+  onchange: null,
+  addListener: jest.fn(),
+  removeListener: jest.fn()
+}));
 
 const customRender = <
   Q extends jestFunc.Queries = typeof jestFunc.queries,
