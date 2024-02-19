@@ -1,0 +1,246 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Match snapshot  1`] = `
+<div>
+  <div
+    class="chakra-stack css-1mgk44a"
+  >
+    <div
+      class="chakra-stack css-11ehgu5"
+    >
+      <div
+        class="chakra-stack css-1igwmid"
+      >
+        <button
+          aria-label="show-sidebar"
+          class="chakra-button css-1p6akhc"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            color="#000000"
+            focusable="false"
+            height="36px"
+            viewBox="0 0 50 50"
+            width="36px"
+          >
+            <path
+              d="M0 7.5v5h50v-5Zm0 15v5h50v-5Zm0 15v5h50v-5Z"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
+        <div
+          class="chakra-input__group css-173l7m2"
+          data-group="true"
+        >
+          <div
+            class="chakra-input__left-element css-un1w24"
+          >
+            <svg
+              color="#a5adc6"
+              height="20px"
+              viewBox="0 0 50 50"
+              width="20px"
+            >
+              <path
+                d="M21 3C11.602 3 4 10.602 4 20s7.602 17 17 17c3.355 0 6.46-.984 9.094-2.656l12.281 12.281 4.25-4.25L34.5 30.281C36.68 27.421 38 23.88 38 20c0-9.398-7.602-17-17-17Zm0 4c7.2 0 13 5.8 13 13s-5.8 13-13 13S8 27.2 8 20 13.8 7 21 7Z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+          <input
+            class="chakra-input css-3lltm1"
+            placeholder="Search here..."
+            type="text"
+          />
+        </div>
+      </div>
+      <div
+        class="chakra-stack css-12xyi0f"
+      >
+        <svg
+          color="#929bb5"
+          height="36"
+          width="36"
+        >
+          <g
+            data-name="Group 1095"
+          >
+            <path
+              d="M0 0h36v36H0z"
+              fill="none"
+            />
+            <path
+              d="M13.916 28.767v-.747H8.347a3.345 3.345 0 0 1-3.342-3.337v-.563a3.776 3.776 0 0 1 2.1-3.4 1.852 1.852 0 0 0 1.024-1.5l.663-7.293a9.248 9.248 0 0 1 11.982-7.982 8.135 8.135 0 0 0-.942 2.041 7.12 7.12 0 0 0-1.833-.238 6.983 6.983 0 0 0-6.987 6.383l-.663 7.289a4.068 4.068 0 0 1-2.244 3.287 1.567 1.567 0 0 0-.872 1.413v.567a1.116 1.116 0 0 0 1.113 1.115h19.307a1.116 1.116 0 0 0 1.115-1.115v-.567a1.564 1.564 0 0 0-.87-1.407 4.067 4.067 0 0 1-2.246-3.293l-.294-3.237a8.128 8.128 0 0 0 2.267.329l.246 2.707a1.871 1.871 0 0 0 1.019 1.493 3.783 3.783 0 0 1 2.105 3.4v.567a3.344 3.344 0 0 1-3.342 3.341h-5.569v.743a4.084 4.084 0 0 1-8.168 0zm2.227 0a1.857 1.857 0 0 0 3.713 0v-.747h-3.713Zm11.209-15.232a5.177 5.177 0 0 1-2.3-.688l-.065-.716a6.987 6.987 0 0 0-2.447-4.73 5.2 5.2 0 0 1 .906-2.105 9.239 9.239 0 0 1 3.759 6.633l.146 1.605z"
+              fill="currentColor"
+            />
+            <path
+              d="M27.655 13.548a5.2 5.2 0 1 1 5.2-5.2 5.2 5.2 0 0 1-5.2 5.2Z"
+              data-name="Shape"
+              fill="#ff6359"
+            />
+          </g>
+        </svg>
+        <svg
+          color="#a5adc6"
+          height="36px"
+          width="36px"
+        >
+          <g
+            data-name="Group 2"
+          >
+            <path
+              d="M0 0h35v35H0z"
+              fill="none"
+            />
+            <path
+              d="M17.253 31.765a13.888 13.888 0 0 1-6.133-1.41 14.217 14.217 0 0 1-7.011 1.41c-.4 0-.831-.009-1.276-.026a1.063 1.063 0 0 1-.939-.621 1.061 1.061 0 0 1 .122-1.114 16.089 16.089 0 0 0 2.978-5.445A14.023 14.023 0 0 1 20.028 4.005a7.876 7.876 0 0 0-.972 2.018A11.864 11.864 0 0 0 7.069 23.829a1.078 1.078 0 0 1 .132.769 14.649 14.649 0 0 1-2.24 4.992 10.349 10.349 0 0 0 5.487-1.361 1.073 1.073 0 0 1 .62-.2 1.086 1.086 0 0 1 .515.131 11.867 11.867 0 0 0 17.393-12.217 7.875 7.875 0 0 0 2.018-.972 14.025 14.025 0 0 1-13.741 16.794Zm4.313-10.064H11.501a1.079 1.079 0 0 1 0-2.157h10.064a1.079 1.079 0 0 1 0 2.157Zm-2.872-5.752h-7.193a1.078 1.078 0 1 1 0-2.156h7.193a1.078 1.078 0 1 1 0 2.156Zm9.5-2.776a11.991 11.991 0 0 0-6.37-6.369 5.07 5.07 0 0 1 1.125-1.865 14.051 14.051 0 0 1 7.111 7.11 5.071 5.071 0 0 1-1.866 1.124Z"
+              fill="currentColor"
+            />
+            <path
+              d="M26.598 13.434a5.032 5.032 0 1 1 5.032-5.032 5.032 5.032 0 0 1-5.032 5.032Z"
+              data-name="Shape"
+              fill="#ff6359"
+            />
+          </g>
+        </svg>
+        <button
+          aria-controls="popover-content-:r1:"
+          aria-expanded="false"
+          aria-haspopup="dialog"
+          aria-label="show-dropdown"
+          class="chakra-button css-1p6akhc"
+          id="popover-trigger-:r1:"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="chakra-avatar css-muc813"
+            focusable="false"
+          >
+            <svg
+              aria-label=" avatar"
+              class="chakra-avatar__svg css-16ite8i"
+              role="img"
+              viewBox="0 0 128 128"
+            >
+              <path
+                d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+                fill="currentColor"
+              />
+              <path
+                d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+                fill="currentColor"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="chakra-popover__popper css-1qq679y"
+          style="visibility: hidden; position: absolute; min-width: max-content; inset: 0 auto auto 0;"
+        >
+          <section
+            aria-describedby="popover-body-:r1:"
+            aria-labelledby="popover-header-:r1:"
+            class="chakra-popover__content css-n8n3bl"
+            id="popover-content-:r1:"
+            role="dialog"
+            style="transform-origin: var(--popper-transform-origin); opacity: 0; visibility: hidden; transform: scale(0.95) translateZ(0);"
+            tabindex="-1"
+          >
+            <div
+              class="chakra-popover__arrow-positioner css-0"
+              data-popper-arrow=""
+              style="position: absolute;"
+            >
+              <div
+                class="chakra-popover__arrow css-9gpjr2"
+                data-popper-arrow-inner=""
+              />
+            </div>
+            <header
+              class="chakra-popover__header css-1t6b1jw"
+              id="popover-header-:r1:"
+            >
+              <div
+                class="chakra-stack css-14prjgc"
+              >
+                <p
+                  class="chakra-text css-czj0gx"
+                >
+                  management
+                </p>
+                <h2
+                  class="chakra-heading css-2pj3d7"
+                />
+              </div>
+            </header>
+            <div
+              class="chakra-popover__body css-1ews2c8"
+              id="popover-body-:r1:"
+            >
+              <div
+                class="chakra-stack css-scpwb"
+              >
+                <button
+                  class="chakra-button css-1l9735s"
+                  type="button"
+                >
+                  Log out
+                  <span
+                    class="chakra-button__icon css-1hzyiq5"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      color="#a5adc6"
+                      focusable="false"
+                      height="12px"
+                      viewBox="0 0 512 512"
+                      width="12px"
+                    >
+                      <path
+                        d="M18 32.8c-1.9.9-4.5 3.2-5.7 5.1L10 41.3v215.1c0 211.6 0 215.2 2 218.3 2 3.3 5.4 5.5 10.3 6.7 4 1 11.2-2.5 13.7-6.6 2-3.3 2-4.2 2-219V40.2l-2.7-3.3c-4.8-5.7-11.2-7.2-17.3-4.1zM188.5 179.4c-1.6.8-18.4 16.7-37.2 35.3-37.1 36.6-37 36.6-34.4 44.5 1.7 5.1 69.5 72.4 73.8 73.3 4.6.9 9.7-1 13.3-5.1 2.4-2.8 3-4.4 3-8 0-2.5-.5-5.5-1.1-6.7-.5-1.2-10.3-11.3-21.7-22.4l-20.7-20.2 163-.1c158.5 0 163.1-.1 167.2-2 10.1-4.5 11.3-18.7 2-23.7-3-1.7-12.9-1.8-167.6-2.3l-164.3-.5 20.6-19.9c11.4-11 21.4-21.2 22.2-22.7 3.1-6.1.8-14.7-5-18.4-3.5-2.3-9.5-2.8-13.1-1.1z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div
+      class="chakra-input__group css-173l7m2"
+      data-group="true"
+    >
+      <div
+        class="chakra-input__left-element css-un1w24"
+      >
+        <svg
+          color="#a5adc6"
+          height="20px"
+          viewBox="0 0 50 50"
+          width="20px"
+        >
+          <path
+            d="M21 3C11.602 3 4 10.602 4 20s7.602 17 17 17c3.355 0 6.46-.984 9.094-2.656l12.281 12.281 4.25-4.25L34.5 30.281C36.68 27.421 38 23.88 38 20c0-9.398-7.602-17-17-17Zm0 4c7.2 0 13 5.8 13 13s-5.8 13-13 13S8 27.2 8 20 13.8 7 21 7Z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+      <input
+        class="chakra-input css-3lltm1"
+        placeholder="Search here..."
+        type="text"
+      />
+    </div>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</div>
+`;
