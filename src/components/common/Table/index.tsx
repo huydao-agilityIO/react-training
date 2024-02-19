@@ -58,7 +58,7 @@ const DataTable = ({
   }, [data, isLoading]);
 
   return (
-    <TableContainer w={{ sm: 'full', xl: '6xl' }} bg="light.300">
+    <TableContainer bg="light.300">
       <Table>
         <Thead>
           <Tr bg="primary.300">
