@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="chakra-stack css-1igwmid"
+  >
+    <button
+      class="chakra-button css-9mwpdm"
+      disabled=""
+      type="button"
+    >
+      Previous
+    </button>
+    <button
+      class="chakra-button css-9mwpdm"
+      disabled=""
+      type="button"
+    >
+      1
+    </button>
+    <button
+      class="chakra-button css-9mwpdm"
+      type="button"
+    >
+      2
+    </button>
+    <button
+      class="chakra-button css-9mwpdm"
+      type="button"
+    >
+      3
+    </button>
+    <button
+      class="chakra-button css-9mwpdm"
+      type="button"
+    >
+      4
+    </button>
+    <button
+      class="chakra-button css-9mwpdm"
+      type="button"
+    >
+      5
+    </button>
+    <button
+      class="chakra-button css-9mwpdm"
+      type="button"
+    >
+      Next
+    </button>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</DocumentFragment>
+`;
