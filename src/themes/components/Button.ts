@@ -14,6 +14,7 @@ const secondaryStyles = {
 
 const buttonTheme = defineStyleConfig({
   baseStyle: {
+    fontFamily: 'body',
     borderWidth: 1,
     borderStyle: 'solid',
     fontWeight: 'medium',
@@ -48,6 +49,12 @@ const buttonTheme = defineStyleConfig({
     }
   },
   sizes: {
+    xs: {
+      fontSize: 'md',
+      lineHeight: 'short',
+      py: 1.5,
+      px: 3
+    },
     sm: {
       fontSize: 'sm',
       lineHeight: '4',

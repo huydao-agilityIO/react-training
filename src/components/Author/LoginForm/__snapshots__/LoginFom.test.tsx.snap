@@ -55,7 +55,7 @@ exports[`LoginForm renders correctly 1`] = `
                 />
               </div>
               <button
-                class="chakra-button css-1lsg31x"
+                class="chakra-button css-wkgiqm"
                 type="submit"
               >
                 Log In

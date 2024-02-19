@@ -4,14 +4,14 @@ describe('Pagination', () => {
   const onChangePageMock = jest.fn();
 
   it('renders correctly', () => {
-    const { asFragment } = testLibReactUtils.render(
+    const { container } = testLibReactUtils.render(
       <Pagination
         currentPage={1}
         totalPage={5}
         onChangePage={onChangePageMock}
       />
     );
-    expect(asFragment()).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('calls onChangePage when a different page number is clicked', () => {

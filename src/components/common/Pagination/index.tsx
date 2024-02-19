@@ -25,10 +25,26 @@ const Pagination = ({
   };
 
   return (
-    <HStack>
-      <Button onClick={handlePreviousPage} isDisabled={currentPage === 1}>
+    <HStack gap={0}>
+      <Button
+        variant="outline"
+        size="xs"
+        borderRadius="null"
+        color="primary.300"
+        _disabled={{
+          bg: 'primary.300',
+          borderColor: 'primary.300',
+          color: 'light.300'
+        }}
+        _hover={{
+          bg: 'primary.300',
+          borderColor: 'primary.300',
+          color: 'light.300'
+        }}
+        isDisabled={currentPage === 1}
+        onClick={handlePreviousPage}>
         Previous
-      </Button>{' '}
+      </Button>
       {pageNumbers.map((number) => {
         const handleChangePage = () => {
           onChangePage(number);
@@ -36,13 +52,43 @@ const Pagination = ({
         return (
           <Button
             key={number}
+            variant="outline"
+            size="xs"
+            borderRadius="null"
+            color="primary.300"
+            _disabled={{
+              bg: 'primary.300',
+              borderColor: 'primary.300',
+              color: 'light.300'
+            }}
+            _hover={{
+              bg: 'primary.300',
+              borderColor: 'primary.300',
+              color: 'light.300'
+            }}
             isDisabled={currentPage === number}
             onClick={handleChangePage}>
             {number}
           </Button>
         );
       })}
-      <Button onClick={handleNextPage} isDisabled={currentPage === totalPage}>
+      <Button
+        variant="outline"
+        size="xs"
+        borderRadius="null"
+        color="primary.300"
+        _disabled={{
+          bg: 'primary.300',
+          borderColor: 'primary.300',
+          color: 'light.300'
+        }}
+        _hover={{
+          bg: 'primary.300',
+          borderColor: 'primary.300',
+          color: 'light.300'
+        }}
+        isDisabled={currentPage === totalPage}
+        onClick={handleNextPage}>
         Next
       </Button>
     </HStack>
