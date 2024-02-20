@@ -1,5 +1,10 @@
+import { useState } from 'react';
+
 // Apis
-import { useGetTablePatient } from '@shared/apis';
+import {
+  useGetTablePatient,
+  useGetTablePatientByPagination
+} from '@shared/apis';
 
 // Layouts
 import { DashboardLayout } from '@shared/layouts';
@@ -8,11 +13,23 @@ import { DashboardLayout } from '@shared/layouts';
 import TablePatient from '@shared/pages/HomePage/TablePatient';
 
 const HomePage = () => {
-  const { data: dataPatient, isLoading } = useGetTablePatient();
+  const [currentPage, setCurrentPage] = useState(1);
+  // Fetch all data to calc page number
+  const { count: totalPage } = useGetTablePatient();
+
+  // Fetch data with param: page and limit
+  const { data: dataPatientByPagination, isLoading } =
+    useGetTablePatientByPagination(currentPage);
 
   return (
     <DashboardLayout onSearch={() => {}}>
-      <TablePatient data={dataPatient ?? []} isLoading={isLoading} />
+      <TablePatient
+        data={dataPatientByPagination ?? []}
+        currentPage={currentPage}
+        isLoading={isLoading}
+        totalPage={totalPage}
+        onChangePage={setCurrentPage}
+      />
     </DashboardLayout>
   );
 };

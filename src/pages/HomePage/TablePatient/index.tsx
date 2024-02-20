@@ -22,10 +22,19 @@ import { DataTable, TextHelper } from '@shared/components';
 
 interface TablePatientProps {
   data: Patient[];
+  currentPage: number;
+  totalPage: number;
   isLoading?: boolean;
+  onChangePage: (pageNumber: number) => void;
 }
 
-const TablePatient = ({ data = [], isLoading = false }: TablePatientProps) => {
+const TablePatient = ({
+  data = [],
+  currentPage,
+  totalPage,
+  isLoading = false,
+  onChangePage
+}: TablePatientProps) => {
   const renderPatientName = useCallback(
     (firstName: string, lastName: string, urlAvatar: string) => (
       <HStack spacing={5}>
@@ -135,9 +144,12 @@ const TablePatient = ({ data = [], isLoading = false }: TablePatientProps) => {
 
   return (
     <DataTable
-      headingMapping={PATIENT_HEADING_MAPPING}
       data={formatData}
+      currentPage={currentPage}
+      totalPage={totalPage}
+      headingMapping={PATIENT_HEADING_MAPPING}
       isLoading={isLoading}
+      onChangePage={onChangePage}
     />
   );
 };
