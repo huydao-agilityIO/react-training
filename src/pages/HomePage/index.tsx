@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useDisclosure } from '@chakra-ui/react';
 
 // Apis
 import {
@@ -11,8 +12,10 @@ import { DashboardLayout } from '@shared/layouts';
 
 // Components
 import TablePatient from '@shared/pages/HomePage/TablePatient';
+import { CreatePatientForm } from '@shared/components';
 
 const HomePage = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [currentPage, setCurrentPage] = useState(1);
   // Fetch all data to calc page number
   const { count: totalPage } = useGetTablePatient();
@@ -22,15 +25,23 @@ const HomePage = () => {
     useGetTablePatientByPagination(currentPage);
 
   return (
-    <DashboardLayout onSearch={() => {}}>
-      <TablePatient
-        data={dataPatientByPagination ?? []}
-        currentPage={currentPage}
-        isLoading={isLoading}
-        totalPage={totalPage}
-        onChangePage={setCurrentPage}
+    <>
+      <DashboardLayout onSearch={() => {}}>
+        <TablePatient
+          data={dataPatientByPagination ?? []}
+          currentPage={currentPage}
+          isLoading={isLoading}
+          totalPage={totalPage}
+          onChangePage={setCurrentPage}
+          onOpenCreatePatientModal={onOpen}
+        />
+      </DashboardLayout>
+      <CreatePatientForm
+        isOpen={isOpen}
+        onClose={onClose}
+        onSubmit={() => {}}
       />
-    </DashboardLayout>
+    </>
   );
 };
 
