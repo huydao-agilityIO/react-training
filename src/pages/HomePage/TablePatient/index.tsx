@@ -1,8 +1,8 @@
-import { ReactNode, useCallback } from 'react';
-import { Avatar, HStack, IconButton } from '@chakra-ui/react';
+import { ReactNode, memo, useCallback } from 'react';
+import { Avatar, HStack } from '@chakra-ui/react';
 
 // Constants
-import { PATIENT_HEADING_MAPPING } from '@shared/constants';
+import { ACTION_MAPPING, PATIENT_HEADING_MAPPING } from '@shared/constants';
 
 // Types
 import { Patient } from '@shared/types';
@@ -14,11 +14,8 @@ import {
   formatFullName
 } from '@shared/utils';
 
-// Svg
-import { EllipsisVertical } from '@shared/SVG';
-
 // Components
-import { DataTable, TextHelper } from '@shared/components';
+import { ActionDropdown, DataTable, TextHelper } from '@shared/components';
 
 interface TablePatientProps {
   data: Patient[];
@@ -48,13 +45,7 @@ const TablePatient = ({
   );
 
   const renderAction = useCallback(
-    () => (
-      <IconButton
-        variant="default"
-        aria-label="show-dropdown"
-        icon={<EllipsisVertical />}
-      />
-    ),
+    () => <ActionDropdown actions={ACTION_MAPPING} onOpenModal={() => {}} />,
     []
   );
 
@@ -154,4 +145,4 @@ const TablePatient = ({
   );
 };
 
-export default TablePatient;
+export default memo(TablePatient);

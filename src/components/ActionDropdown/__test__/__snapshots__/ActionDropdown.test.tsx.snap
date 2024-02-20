@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActionDropdown renders correctly 1`] = `
+<div>
+  <button
+    aria-controls="popover-content-:r1:"
+    aria-expanded="false"
+    aria-haspopup="dialog"
+    aria-label="show-dropdown"
+    class="chakra-button css-uyf3nr"
+    id="popover-trigger-:r1:"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      color="secondary.150"
+      focusable="false"
+      height="16px"
+      viewBox="0 0 128 512"
+      width="8px"
+    >
+      <path
+        d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm56-104A56 56 0 1 0 8 96a56 56 0 1 0 112 0z"
+        fill="currentColor"
+      />
+    </svg>
+  </button>
+  <div
+    class="chakra-popover__popper css-1qq679y"
+    style="visibility: hidden; position: absolute; min-width: max-content; inset: 0 auto auto 0;"
+  >
+    <section
+      aria-describedby="popover-body-:r1:"
+      class="chakra-popover__content css-16f50xs"
+      id="popover-content-:r1:"
+      role="dialog"
+      style="transform-origin: var(--popper-transform-origin); opacity: 0; visibility: hidden; transform: scale(0.95) translateZ(0);"
+      tabindex="-1"
+    >
+      <div
+        class="chakra-popover__body css-1ews2c8"
+        id="popover-body-:r1:"
+      >
+        <div
+          class="chakra-stack css-8g8ihq"
+        >
+          <ul
+            class="css-155za0w"
+            role="list"
+          >
+            <li
+              class="css-1dvqbfa"
+            >
+              Create
+            </li>
+            <li
+              class="css-1dvqbfa"
+            >
+              Edit
+            </li>
+            <li
+              class="css-1dvqbfa"
+            >
+              Delete
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</div>
+`;

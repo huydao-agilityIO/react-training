@@ -1,15 +1,17 @@
 import { SVGProps } from 'react';
 
+import { colors, spacing } from '@shared/themes/bases';
+
 interface EllipsisVerticalProps extends SVGProps<SVGSVGElement> {
-  width?: number;
-  height?: number;
+  width?: string;
+  height?: string;
   color?: string;
 }
 
 const EllipsisVertical = ({
-  width = 9,
-  height = 18,
-  color = 'secondary.300',
+  width = spacing.space[2],
+  height = spacing.space[4],
+  color = colors.secondary[300],
   ...props
 }: EllipsisVerticalProps) => (
   <svg
