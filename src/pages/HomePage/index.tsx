@@ -6,9 +6,6 @@ import {
   useGetTablePatientByPagination
 } from '@shared/apis';
 
-// Constants
-import { LIMIT_PATIENT_TABLE } from '@shared/constants';
-
 // Layouts
 import { DashboardLayout } from '@shared/layouts';
 
@@ -18,17 +15,11 @@ import TablePatient from '@shared/pages/HomePage/TablePatient';
 const HomePage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   // Fetch all data to calc page number
-  const { data: dataPatient, isLoading } = useGetTablePatient();
+  const { count: totalPage } = useGetTablePatient();
 
   // Fetch data with param: page and limit
-  const { data: dataPatientByPagination } =
+  const { data: dataPatientByPagination, isLoading } =
     useGetTablePatientByPagination(currentPage);
-
-  const totalPage = Math.ceil((dataPatient ?? []).length / LIMIT_PATIENT_TABLE);
-
-  const handleChangePage = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-  };
 
   return (
     <DashboardLayout onSearch={() => {}}>
@@ -37,7 +28,7 @@ const HomePage = () => {
         currentPage={currentPage}
         isLoading={isLoading}
         totalPage={totalPage}
-        onChangePage={handleChangePage}
+        onChangePage={setCurrentPage}
       />
     </DashboardLayout>
   );
