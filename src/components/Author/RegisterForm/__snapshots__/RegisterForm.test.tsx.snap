@@ -102,7 +102,7 @@ exports[`RegisterForm renders correctly 1`] = `
                 </span>
               </label>
               <button
-                class="chakra-button css-1lsg31x"
+                class="chakra-button css-wkgiqm"
                 type="submit"
               >
                 Sign up
