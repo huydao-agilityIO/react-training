@@ -3,6 +3,8 @@ export * from './common';
 
 export * from './Author';
 
+export * from './Patient';
+
 export { default as ActionDropdown } from './ActionDropdown';
 export { default as Dropdown } from './Dropdown';
 export { default as FormGroupControl } from './FormGroupControl';

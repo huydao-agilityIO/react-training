@@ -1,11 +1,14 @@
 import { ReactNode, memo, useCallback } from 'react';
-import { Avatar, HStack } from '@chakra-ui/react';
+import { Avatar, Button, HStack, Heading, Stack } from '@chakra-ui/react';
 
 // Constants
 import { ACTION_MAPPING, PATIENT_HEADING_MAPPING } from '@shared/constants';
 
 // Types
 import { Patient } from '@shared/types';
+
+// Svg
+import { SearchIcon } from '@shared/SVG';
 
 // Utils
 import {
@@ -15,13 +18,19 @@ import {
 } from '@shared/utils';
 
 // Components
-import { ActionDropdown, DataTable, TextHelper } from '@shared/components';
+import {
+  ActionDropdown,
+  DataTable,
+  SearchBar,
+  TextHelper
+} from '@shared/components';
 
 interface TablePatientProps {
   data: Patient[];
   currentPage: number;
   totalPage: number;
   isLoading?: boolean;
+  onOpenCreatePatientModal?: () => void;
   onChangePage: (pageNumber: number) => void;
 }
 
@@ -30,6 +39,7 @@ const TablePatient = ({
   currentPage,
   totalPage,
   isLoading = false,
+  onOpenCreatePatientModal,
   onChangePage
 }: TablePatientProps) => {
   const renderPatientName = useCallback(
@@ -134,14 +144,29 @@ const TablePatient = ({
   });
 
   return (
-    <DataTable
-      data={formatData}
-      currentPage={currentPage}
-      totalPage={totalPage}
-      headingMapping={PATIENT_HEADING_MAPPING}
-      isLoading={isLoading}
-      onChangePage={onChangePage}
-    />
+    <Stack bg="light.300" p={{ base: 4, md: 7.5 }} borderRadius="xl">
+      <HStack justifyContent="space-between">
+        <Heading size="md" variant="secondary" alignItems="center">
+          Patients
+        </Heading>
+        <HStack>
+          <SearchBar
+            onChange={() => {}}
+            placeholder="Search here..."
+            leftContent={<SearchIcon />}
+          />
+          <Button onClick={onOpenCreatePatientModal}>Add Patient</Button>
+        </HStack>
+      </HStack>
+      <DataTable
+        data={formatData}
+        currentPage={currentPage}
+        totalPage={totalPage}
+        headingMapping={PATIENT_HEADING_MAPPING}
+        isLoading={isLoading}
+        onChangePage={onChangePage}
+      />
+    </Stack>
   );
 };
 
