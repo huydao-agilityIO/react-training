@@ -5,7 +5,7 @@ interface FormGroupControlProps {
   type: string;
   id?: string;
   placeholder?: string;
-  value?: string;
+  value?: string | number;
   errorMessage?: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
 }

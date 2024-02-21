@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 export interface ContentMapping {
   customRender?: () => ReactNode;
   value?: string;
-  cellStyle?: Record<string, string | number>;
+  cellStyle?: any;
 }
 
 export interface HeadingMapping extends ContentMapping {

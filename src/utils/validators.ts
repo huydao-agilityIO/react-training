@@ -22,3 +22,32 @@ export const FORM_SCHEMA = {
     }
   }
 };
+
+export const VALIDATION_FORM_PATIENT = {
+  FIRST_NAME: {
+    required: ERROR_MESSAGES.REQUIRED('First Name')
+  },
+  LAST_NAME: {
+    required: ERROR_MESSAGES.REQUIRED('Last Name')
+  },
+  DEPARTMENT: {
+    required: ERROR_MESSAGES.REQUIRED('Department')
+  },
+  APPOINTMENT_DATE: {
+    required: ERROR_MESSAGES.REQUIRED('Appointment date')
+  },
+  SERIAL_NUMBER: {
+    required: ERROR_MESSAGES.REQUIRED('Serial number'),
+    pattern: {
+      value: REGEX_PATTERN.NUMBER,
+      message: ERROR_MESSAGES.FORMAT('Serial number')
+    }
+  },
+  AMOUNT: {
+    required: ERROR_MESSAGES.REQUIRED('Amount'),
+    pattern: {
+      value: REGEX_PATTERN.NUMBER,
+      message: ERROR_MESSAGES.FORMAT('Amount')
+    }
+  }
+};
