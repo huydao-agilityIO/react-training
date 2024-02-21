@@ -46,7 +46,11 @@ const TablePatient = ({
     (firstName: string, lastName: string, urlAvatar: string) => (
       <HStack spacing={5}>
         <Avatar src={urlAvatar} name={formatFullName(firstName, lastName)} />
-        <TextHelper maxW={36} textOverflow="ellipsis" overflow="hidden">
+        <TextHelper
+          maxW={36}
+          textOverflow="ellipsis"
+          overflow="hidden"
+          textTransform="capitalize">
           {formatFullName(firstName, lastName)}
         </TextHelper>
       </HStack>
@@ -92,7 +96,8 @@ const TablePatient = ({
             color: 'secondary.300',
             maxW: 20,
             textOverflow: 'ellipsis',
-            overflow: 'hidden'
+            overflow: 'hidden',
+            textTransform: 'capitalize'
           }
         },
         {

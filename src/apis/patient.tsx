@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 
 // Constants
 import {
@@ -7,7 +7,7 @@ import {
 } from '@shared/constants';
 
 // Services
-import { getData } from '@shared/services';
+import { getData, postData } from '@shared/services';
 
 // Types
 import { Patient } from '@shared/types';
@@ -39,3 +39,20 @@ export const useGetTablePatientByPagination = (page: number) =>
     queryKey: ['patient', page],
     keepPreviousData: true
   });
+
+export const useAddNewPatient = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationKey: ['patient'],
+    mutationFn: (data: Patient) => {
+      return postData<Patient>(
+        API_HOSPITAL_MANAGEMENT.HOSPITAL_MANAGEMENT_PATIENT,
+        data
+      );
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['patient'] });
+    }
+  });
+};

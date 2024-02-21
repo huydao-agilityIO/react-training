@@ -5,13 +5,15 @@ import { Button, HStack } from '@chakra-ui/react';
 // Components
 import { FormGroupControl } from '@shared/components';
 import PatientFormContainer from '../PatientFormContainer';
+import { Patient } from '@shared/types';
+import { VALIDATION_FORM_PATIENT } from '@shared/utils';
 
 interface CreatePatientFormProps {
   isOpen: boolean;
   isLoading?: boolean;
   errorResponseAPI?: string;
   onClose: () => void;
-  onSubmit: () => void;
+  onSubmit: (payload: Patient) => void;
 }
 
 const CreatePatientForm = ({
@@ -21,14 +23,14 @@ const CreatePatientForm = ({
   onClose,
   onSubmit
 }: CreatePatientFormProps) => {
-  const { control } = useForm();
+  const { control, handleSubmit } = useForm<Patient>();
   const renderCreatePatientBody = useCallback(() => {
     return (
       <>
         <Controller
           name="firstName"
           control={control}
-          rules={{}}
+          rules={VALIDATION_FORM_PATIENT.FIRST_NAME}
           render={({
             field: { value, onChange, ...rest },
             fieldState: { error }
@@ -49,7 +51,7 @@ const CreatePatientForm = ({
         <Controller
           name="lastName"
           control={control}
-          rules={{}}
+          rules={VALIDATION_FORM_PATIENT.LAST_NAME}
           render={({
             field: { value, onChange, ...rest },
             fieldState: { error }
@@ -70,7 +72,7 @@ const CreatePatientForm = ({
         <Controller
           name="department"
           control={control}
-          rules={{}}
+          rules={VALIDATION_FORM_PATIENT.DEPARTMENT}
           render={({
             field: { value, onChange, ...rest },
             fieldState: { error }
@@ -91,7 +93,7 @@ const CreatePatientForm = ({
         <Controller
           name="appointmentDate"
           control={control}
-          rules={{}}
+          rules={VALIDATION_FORM_PATIENT.APPOINTMENT_DATE}
           render={({
             field: { value, onChange, ...rest },
             fieldState: { error }
@@ -112,7 +114,7 @@ const CreatePatientForm = ({
         <Controller
           name="serialNumber"
           control={control}
-          rules={{}}
+          rules={VALIDATION_FORM_PATIENT.SERIAL_NUMBER}
           render={({
             field: { value, onChange, ...rest },
             fieldState: { error }
@@ -133,7 +135,7 @@ const CreatePatientForm = ({
         <Controller
           name="amount"
           control={control}
-          rules={{}}
+          rules={VALIDATION_FORM_PATIENT.AMOUNT}
           render={({
             field: { value, onChange, ...rest },
             fieldState: { error }
@@ -143,7 +145,7 @@ const CreatePatientForm = ({
                 type="number"
                 id="amount"
                 placeholder="Amount"
-                value={value?.toString()}
+                value={value}
                 errorMessage={error?.message}
                 onChange={onChange}
                 {...rest}
@@ -158,15 +160,19 @@ const CreatePatientForm = ({
   const renderCreatePatientFooter = useCallback(() => {
     return (
       <HStack gap={5}>
-        <Button variant="secondary" isDisabled={isLoading}>
+        <Button variant="secondary" isDisabled={isLoading} onClick={onClose}>
           Cancel
         </Button>
-        <Button type="submit" isLoading={isLoading} onClick={onSubmit}>
+        <Button
+          type="submit"
+          isLoading={isLoading}
+          isDisabled={!!errorResponseAPI}
+          onClick={handleSubmit(onSubmit)}>
           Submit
         </Button>
       </HStack>
     );
-  }, [isLoading, onSubmit]);
+  }, [errorResponseAPI, handleSubmit, isLoading, onClose, onSubmit]);
 
   return (
     <PatientFormContainer

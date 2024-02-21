@@ -1,18 +1,22 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useDisclosure } from '@chakra-ui/react';
 
 // Apis
 import {
+  useAddNewPatient,
   useGetTablePatient,
   useGetTablePatientByPagination
 } from '@shared/apis';
+
+// types
+import { Patient } from '@shared/types';
 
 // Layouts
 import { DashboardLayout } from '@shared/layouts';
 
 // Components
-import TablePatient from '@shared/pages/HomePage/TablePatient';
 import { CreatePatientForm } from '@shared/components';
+import TablePatient from '@shared/pages/HomePage/TablePatient';
 
 const HomePage = () => {
   const TablePatientWrapper = ({ onOpen }: { onOpen: () => void }) => {
@@ -36,8 +40,17 @@ const HomePage = () => {
     );
   };
 
-  const WrapTablePatientWrapperContainer = () => {
+  const TablePatientLayout = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const { mutate, isLoading } = useAddNewPatient();
+
+    const handleAddNewPatient = useCallback(
+      (payload: Patient) => {
+        mutate(payload);
+        onClose();
+      },
+      [mutate, onClose]
+    );
 
     return (
       <>
@@ -45,7 +58,8 @@ const HomePage = () => {
         <CreatePatientForm
           isOpen={isOpen}
           onClose={onClose}
-          onSubmit={() => {}}
+          isLoading={isLoading}
+          onSubmit={handleAddNewPatient}
         />
       </>
     );
@@ -53,7 +67,7 @@ const HomePage = () => {
 
   return (
     <DashboardLayout onSearch={() => {}}>
-      <WrapTablePatientWrapperContainer />
+      <TablePatientLayout />
     </DashboardLayout>
   );
 };
