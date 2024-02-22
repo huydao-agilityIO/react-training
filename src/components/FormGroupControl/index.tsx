@@ -7,23 +7,29 @@ interface FormGroupControlProps {
   placeholder?: string;
   value?: string | number;
   errorMessage?: string;
+  defaultValue?: string;
+  name?: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
 }
 
 const FormGroupControl = ({
   type,
-  id,
-  placeholder,
-  value,
-  errorMessage,
+  id = '',
+  placeholder = '',
+  value = '',
+  errorMessage = '',
+  defaultValue = '',
+  name = '',
   onChange
 }: FormGroupControlProps) => (
   <FormControl isInvalid={!!errorMessage}>
     <Input
       type={type}
       id={id}
+      name={name}
       placeholder={placeholder}
       value={value}
+      defaultValue={defaultValue}
       variant={errorMessage ? 'error' : 'default'}
       onChange={onChange}
     />
