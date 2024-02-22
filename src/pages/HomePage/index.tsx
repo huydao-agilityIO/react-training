@@ -80,7 +80,7 @@ const HomePage = () => {
           onOpenEditPatientModal={handleOpenModalPatient}
         />
         <CreatePatientForm
-          isOpen={isOpen && isLoadingDataPatientById}
+          isOpen={isOpen}
           onClose={onClose}
           isLoading={isLoading}
           onSubmit={handleAddNewPatient}
