@@ -5,7 +5,7 @@ import { Avatar, Button, HStack, Heading, Stack } from '@chakra-ui/react';
 import { ACTION_MAPPING, PATIENT_HEADING_MAPPING } from '@shared/constants';
 
 // Types
-import { Patient } from '@shared/types';
+import { ContentMapping, Patient } from '@shared/types';
 
 // Svg
 import { SearchIcon } from '@shared/SVG';
@@ -31,6 +31,7 @@ interface TablePatientProps {
   totalPage: number;
   isLoading?: boolean;
   onOpenCreatePatientModal?: () => void;
+  onOpenEditPatientModal?: (id: string) => void;
   onChangePage: (pageNumber: number) => void;
 }
 
@@ -40,6 +41,7 @@ const TablePatient = ({
   totalPage,
   isLoading = false,
   onOpenCreatePatientModal,
+  onOpenEditPatientModal,
   onChangePage
 }: TablePatientProps) => {
   const renderPatientName = useCallback(
@@ -59,8 +61,17 @@ const TablePatient = ({
   );
 
   const renderAction = useCallback(
-    () => <ActionDropdown actions={ACTION_MAPPING} onOpenModal={() => {}} />,
-    []
+    (id: string) => {
+      const handleOpenEditPatientModal = () => onOpenEditPatientModal?.(id);
+
+      return (
+        <ActionDropdown
+          actions={ACTION_MAPPING}
+          onOpenModal={handleOpenEditPatientModal}
+        />
+      );
+    },
+    [onOpenEditPatientModal]
   );
 
   const PATIENT_CONTENT_MAPPING = useCallback(
@@ -71,9 +82,10 @@ const TablePatient = ({
         lastName: string,
         urlAvatar: string
       ) => ReactNode,
-      renderAction: () => ReactNode
-    ) => {
+      renderAction?: (id: string) => ReactNode
+    ): ContentMapping[] => {
       const {
+        id = '',
         urlAvatar = '',
         firstName = '',
         lastName = '',
@@ -137,7 +149,7 @@ const TablePatient = ({
           }
         },
         {
-          customRender: renderAction
+          customRender: () => renderAction?.(id)
         }
       ];
     },
