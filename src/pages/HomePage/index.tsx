@@ -4,6 +4,7 @@ import { useDisclosure } from '@chakra-ui/react';
 // Apis
 import {
   useAddNewPatient,
+  useDeletePatient,
   useGetPatientById,
   useGetTablePatient,
   useGetTablePatientByPagination
@@ -16,16 +17,22 @@ import { Patient } from '@shared/types';
 import { DashboardLayout } from '@shared/layouts';
 
 // Components
-import { CreatePatientForm, EditPatientForm } from '@shared/components';
+import {
+  CreatePatientForm,
+  DeletePatientModal,
+  EditPatientForm
+} from '@shared/components';
 import TablePatient from '@shared/pages/HomePage/TablePatient';
 
 const HomePage = () => {
   const TablePatientWrapper = ({
     onOpen,
-    onOpenEditPatientModal
+    onOpenEditPatientModal,
+    onOpenDeletePatientModal
   }: {
     onOpen: () => void;
     onOpenEditPatientModal: (id: string) => void;
+    onOpenDeletePatientModal: (id: string) => void;
   }) => {
     const [currentPage, setCurrentPage] = useState(1);
     // Fetch all data to calc page number
@@ -44,6 +51,7 @@ const HomePage = () => {
         onChangePage={setCurrentPage}
         onOpenCreatePatientModal={onOpen}
         onOpenEditPatientModal={onOpenEditPatientModal}
+        onOpenDeletePatientModal={onOpenDeletePatientModal}
       />
     );
   };
@@ -56,9 +64,16 @@ const HomePage = () => {
       onOpen: onOpenEditPatientModal,
       onClose: onCloseEditPatientModal
     } = useDisclosure();
+    const {
+      isOpen: isOpenDeletePatientModal,
+      onOpen: onOpenDeletePatientModal,
+      onClose: onCloseDeletePatientModal
+    } = useDisclosure();
     const { mutate, isLoading } = useAddNewPatient();
     const { data: dataPatientById, isLoading: isLoadingDataPatientById } =
       useGetPatientById(id);
+    const { mutate: handleDelete, isLoading: isLoadingDeletePatient } =
+      useDeletePatient(id);
 
     const handleAddNewPatient = useCallback(
       (payload: Patient) => {
@@ -73,11 +88,25 @@ const HomePage = () => {
       return onOpenEditPatientModal();
     };
 
+    const handleOpenDeletePatientModal = (idPatient: string) => {
+      setId(idPatient);
+      return onOpenDeletePatientModal();
+    };
+
+    const handleDeletePatient = () => {
+      handleDelete();
+
+      if (!isLoadingDeletePatient) {
+        return onCloseDeletePatientModal();
+      }
+    };
+
     return (
       <>
         <TablePatientWrapper
           onOpen={onOpen}
           onOpenEditPatientModal={handleOpenModalPatient}
+          onOpenDeletePatientModal={handleOpenDeletePatientModal}
         />
         <CreatePatientForm
           isOpen={isOpen}
@@ -91,6 +120,12 @@ const HomePage = () => {
           isOpen={isOpenEditPatientModal}
           onClose={onCloseEditPatientModal}
           onSubmit={() => {}}
+        />
+        <DeletePatientModal
+          isOpenModalDeletePatient={isOpenDeletePatientModal}
+          onCloseModalDeletePatient={onCloseDeletePatientModal}
+          onDeletePatient={handleDeletePatient}
+          isLoadingDeletePatient={isLoadingDeletePatient}
         />
       </>
     );

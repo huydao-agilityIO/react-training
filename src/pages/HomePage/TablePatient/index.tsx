@@ -2,7 +2,7 @@ import { ReactNode, memo, useCallback } from 'react';
 import { Avatar, Button, HStack, Heading, Stack } from '@chakra-ui/react';
 
 // Constants
-import { ACTION_MAPPING, PATIENT_HEADING_MAPPING } from '@shared/constants';
+import { PATIENT_HEADING_MAPPING } from '@shared/constants';
 
 // Types
 import { ContentMapping, Patient } from '@shared/types';
@@ -32,6 +32,7 @@ interface TablePatientProps {
   isLoading?: boolean;
   onOpenCreatePatientModal?: () => void;
   onOpenEditPatientModal?: (id: string) => void;
+  onOpenDeletePatientModal?: (id: string) => void;
   onChangePage: (pageNumber: number) => void;
 }
 
@@ -42,6 +43,7 @@ const TablePatient = ({
   isLoading = false,
   onOpenCreatePatientModal,
   onOpenEditPatientModal,
+  onOpenDeletePatientModal,
   onChangePage
 }: TablePatientProps) => {
   const renderPatientName = useCallback(
@@ -63,15 +65,15 @@ const TablePatient = ({
   const renderAction = useCallback(
     (id: string) => {
       const handleOpenEditPatientModal = () => onOpenEditPatientModal?.(id);
+      const handleOpenDeletePatientModal = () => onOpenDeletePatientModal?.(id);
+      const ACTION_MAPPING = [
+        { label: 'Edit', onClick: handleOpenEditPatientModal },
+        { label: 'Delete', onClick: handleOpenDeletePatientModal }
+      ];
 
-      return (
-        <ActionDropdown
-          actions={ACTION_MAPPING}
-          onOpenModal={handleOpenEditPatientModal}
-        />
-      );
+      return <ActionDropdown actions={ACTION_MAPPING} />;
     },
-    [onOpenEditPatientModal]
+    [onOpenDeletePatientModal, onOpenEditPatientModal]
   );
 
   const PATIENT_CONTENT_MAPPING = useCallback(
