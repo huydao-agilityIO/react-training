@@ -36,7 +36,7 @@ const PatientFormContainer = ({
 }: PatientFormContainerProps) => (
   <Modal isOpen={isOpen} onClose={onClose}>
     <ModalOverlay />
-    <ModalContent w={{ base: 'xs', md: 'md' }}>
+    <ModalContent w={{ base: 'xs', md: 'md' }} minHeight="lg">
       <ModalHeader>
         <Stack w="full">
           <Heading textTransform="capitalize">{heading}</Heading>

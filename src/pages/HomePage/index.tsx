@@ -1,5 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useCallback, useState } from 'react';
 import { useDisclosure } from '@chakra-ui/react';
 
 // Apis
@@ -60,24 +59,6 @@ const HomePage = () => {
     const { mutate, isLoading } = useAddNewPatient();
     const { data: dataPatientById, isLoading: isLoadingDataPatientById } =
       useGetPatientById(id);
-    const {
-      firstName,
-      lastName,
-      department,
-      appointmentDate,
-      serialNumber,
-      amount
-    } = (dataPatientById as Patient) || {};
-    const { control, setValue } = useForm<Patient>({
-      defaultValues: {
-        firstName: firstName ?? '',
-        lastName: lastName ?? '',
-        department: department ?? '',
-        appointmentDate: appointmentDate ?? '',
-        serialNumber: serialNumber ?? '',
-        amount: amount ?? 0
-      }
-    });
 
     const handleAddNewPatient = useCallback(
       (payload: Patient) => {
@@ -87,29 +68,8 @@ const HomePage = () => {
       [mutate, onClose]
     );
 
-    useEffect(() => {
-      if (!isLoadingDataPatientById) {
-        setValue('firstName', firstName);
-        setValue('lastName', lastName);
-        setValue('department', department);
-        setValue('appointmentDate', appointmentDate);
-        setValue('serialNumber', serialNumber);
-        setValue('amount', amount);
-      }
-    }, [
-      amount,
-      appointmentDate,
-      department,
-      firstName,
-      isLoadingDataPatientById,
-      lastName,
-      serialNumber,
-      setValue
-    ]);
-
     const handleOpenModalPatient = (idPatient: string) => {
       setId(idPatient);
-
       return onOpenEditPatientModal();
     };
 
@@ -120,14 +80,14 @@ const HomePage = () => {
           onOpenEditPatientModal={handleOpenModalPatient}
         />
         <CreatePatientForm
-          isOpen={isOpen}
+          isOpen={isOpen && isLoadingDataPatientById}
           onClose={onClose}
           isLoading={isLoading}
           onSubmit={handleAddNewPatient}
         />
         <EditPatientForm
+          dataPatientById={dataPatientById}
           isLoadingFetchDataInitial={isLoadingDataPatientById}
-          control={control}
           isOpen={isOpenEditPatientModal}
           onClose={onCloseEditPatientModal}
           onSubmit={() => {}}

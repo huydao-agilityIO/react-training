@@ -1,5 +1,5 @@
-import { useCallback } from 'react';
-import { Control, Controller } from 'react-hook-form';
+import { useCallback, useEffect } from 'react';
+import { Controller, useForm } from 'react-hook-form';
 import { Button, Center, HStack, Spinner } from '@chakra-ui/react';
 import dayjs from 'dayjs';
 
@@ -16,25 +16,57 @@ import PatientFormContainer from '../PatientFormContainer';
 interface EditPatientFormProps {
   isOpen: boolean;
   isLoading?: boolean;
-  isLoadingFetchDataInitial: boolean;
+  isLoadingFetchDataInitial?: boolean;
+  dataPatientById?: Patient;
   errorResponseAPI?: string;
-  control?: Control<Patient>;
   onClose: () => void;
-  onSubmit: () => void;
+  onSubmit: (patient: Patient) => void;
 }
 
 const EditPatientForm = ({
   isOpen,
   isLoading = false,
   isLoadingFetchDataInitial = true,
+  dataPatientById,
   errorResponseAPI = '',
-  control,
   onClose,
   onSubmit
 }: EditPatientFormProps) => {
+  const {
+    firstName,
+    lastName,
+    department,
+    appointmentDate,
+    serialNumber,
+    amount
+  } = (dataPatientById as Patient) || {};
+
+  const { control, setValue, handleSubmit } = useForm<Patient>({
+    defaultValues: {
+      firstName: firstName ?? '',
+      lastName: lastName ?? '',
+      department: department ?? '',
+      appointmentDate: appointmentDate ?? '',
+      serialNumber: serialNumber ?? '',
+      amount: amount ?? 0
+    }
+  });
+
+  useEffect(() => {
+    if (!isLoadingFetchDataInitial) {
+      setValue('firstName', firstName);
+      setValue('lastName', lastName);
+      setValue('department', department);
+      setValue('appointmentDate', appointmentDate);
+      setValue('serialNumber', serialNumber);
+      setValue('amount', amount);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoadingFetchDataInitial]);
+
   const renderCreatePatientBody = useCallback(() => {
     return isLoadingFetchDataInitial ? (
-      <Center p={5}>
+      <Center minHeight={404}>
         <Spinner size="md" />
       </Center>
     ) : (
@@ -179,12 +211,12 @@ const EditPatientForm = ({
           type="submit"
           isLoading={isLoading}
           isDisabled={!!errorResponseAPI}
-          onClick={onSubmit}>
+          onClick={handleSubmit(onSubmit)}>
           Submit
         </Button>
       </HStack>
     );
-  }, [errorResponseAPI, isLoading, onClose, onSubmit]);
+  }, [errorResponseAPI, handleSubmit, isLoading, onClose, onSubmit]);
 
   return (
     <PatientFormContainer
@@ -192,8 +224,8 @@ const EditPatientForm = ({
       body={renderCreatePatientBody()}
       errorResponseAPI={errorResponseAPI}
       footer={renderCreatePatientFooter()}
-      heading="Create new patient"
-      idForm="createPatientForm"
+      heading="Edit patient"
+      idForm="editPatientForm"
       onClose={onClose}
     />
   );

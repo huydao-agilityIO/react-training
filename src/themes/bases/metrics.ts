@@ -46,7 +46,7 @@ export const sizes = {
     xs: '320px',
     sm: '384px ',
     md: '448px',
-    lg: '51px',
+    lg: '542px',
     xl: '576px',
     '2xl': '672px',
     '3xl': '740px',
