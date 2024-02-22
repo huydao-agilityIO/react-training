@@ -4,6 +4,7 @@ import { useDisclosure } from '@chakra-ui/react';
 // Apis
 import {
   useAddNewPatient,
+  useGetPatientById,
   useGetTablePatient,
   useGetTablePatientByPagination
 } from '@shared/apis';
@@ -15,11 +16,17 @@ import { Patient } from '@shared/types';
 import { DashboardLayout } from '@shared/layouts';
 
 // Components
-import { CreatePatientForm } from '@shared/components';
+import { CreatePatientForm, EditPatientForm } from '@shared/components';
 import TablePatient from '@shared/pages/HomePage/TablePatient';
 
 const HomePage = () => {
-  const TablePatientWrapper = ({ onOpen }: { onOpen: () => void }) => {
+  const TablePatientWrapper = ({
+    onOpen,
+    onOpenEditPatientModal
+  }: {
+    onOpen: () => void;
+    onOpenEditPatientModal: (id: string) => void;
+  }) => {
     const [currentPage, setCurrentPage] = useState(1);
     // Fetch all data to calc page number
     const { count: totalPage } = useGetTablePatient();
@@ -36,13 +43,22 @@ const HomePage = () => {
         totalPage={totalPage}
         onChangePage={setCurrentPage}
         onOpenCreatePatientModal={onOpen}
+        onOpenEditPatientModal={onOpenEditPatientModal}
       />
     );
   };
 
   const TablePatientLayout = () => {
+    const [id, setId] = useState<string>('');
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const {
+      isOpen: isOpenEditPatientModal,
+      onOpen: onOpenEditPatientModal,
+      onClose: onCloseEditPatientModal
+    } = useDisclosure();
     const { mutate, isLoading } = useAddNewPatient();
+    const { data: dataPatientById, isLoading: isLoadingDataPatientById } =
+      useGetPatientById(id);
 
     const handleAddNewPatient = useCallback(
       (payload: Patient) => {
@@ -52,14 +68,29 @@ const HomePage = () => {
       [mutate, onClose]
     );
 
+    const handleOpenModalPatient = (idPatient: string) => {
+      setId(idPatient);
+      return onOpenEditPatientModal();
+    };
+
     return (
       <>
-        <TablePatientWrapper onOpen={onOpen} />
+        <TablePatientWrapper
+          onOpen={onOpen}
+          onOpenEditPatientModal={handleOpenModalPatient}
+        />
         <CreatePatientForm
-          isOpen={isOpen}
+          isOpen={isOpen && isLoadingDataPatientById}
           onClose={onClose}
           isLoading={isLoading}
           onSubmit={handleAddNewPatient}
+        />
+        <EditPatientForm
+          dataPatientById={dataPatientById}
+          isLoadingFetchDataInitial={isLoadingDataPatientById}
+          isOpen={isOpenEditPatientModal}
+          onClose={onCloseEditPatientModal}
+          onSubmit={() => {}}
         />
       </>
     );
