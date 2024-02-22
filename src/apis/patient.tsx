@@ -33,6 +33,14 @@ export const useGetTablePatient = () => {
   };
 };
 
+export const useGetPatientById = (id: string) =>
+  useQuery<Patient>({
+    enabled: !!id,
+    queryKey: ['patient', id],
+    queryFn: () =>
+      getData(`${API_HOSPITAL_MANAGEMENT.HOSPITAL_MANAGEMENT_PATIENT}/${id}`)
+  });
+
 export const useGetTablePatientByPagination = (page: number) =>
   useQuery<Patient[]>({
     queryFn: () => getDataByPage(page),
