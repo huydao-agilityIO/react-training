@@ -40,6 +40,7 @@ exports[`RegisterForm renders correctly 1`] = `
                   <input
                     class="chakra-input css-16v8qx8"
                     id="firstName"
+                    name="firstName"
                     placeholder="First Name"
                     type="text"
                     value=""
@@ -52,6 +53,7 @@ exports[`RegisterForm renders correctly 1`] = `
                   <input
                     class="chakra-input css-16v8qx8"
                     id="lastName"
+                    name="lastName"
                     placeholder="Last Name"
                     type="text"
                     value=""
@@ -65,6 +67,7 @@ exports[`RegisterForm renders correctly 1`] = `
                 <input
                   class="chakra-input css-16v8qx8"
                   id="email"
+                  name="email"
                   placeholder="Enter your email"
                   type="email"
                   value=""
@@ -77,6 +80,7 @@ exports[`RegisterForm renders correctly 1`] = `
                 <input
                   class="chakra-input css-16v8qx8"
                   id="password"
+                  name="password"
                   placeholder="Password"
                   type="password"
                   value=""
