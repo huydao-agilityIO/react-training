@@ -53,6 +53,11 @@ exports[`ActionDropdown renders correctly 1`] = `
             >
               Edit
             </li>
+            <li
+              class="css-1dvqbfa"
+            >
+              Delete
+            </li>
           </ul>
         </div>
       </div>
