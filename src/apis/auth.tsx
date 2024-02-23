@@ -46,6 +46,7 @@ export const useSignInAuth = () => {
   return {
     data,
     isLoading,
+    a: 1,
     ...rest
   };
 };
