@@ -21,6 +21,7 @@ interface PatientFormContainerProps {
   body: ReactNode;
   idForm?: string;
   errorResponseAPI?: string;
+  isDeleteModal?: boolean;
   footer?: ReactNode;
   onClose: () => void;
 }
@@ -31,12 +32,15 @@ const PatientFormContainer = ({
   heading,
   idForm = '',
   errorResponseAPI = '',
+  isDeleteModal = false,
   footer = '',
   onClose
 }: PatientFormContainerProps) => (
   <Modal isOpen={isOpen} onClose={onClose}>
     <ModalOverlay />
-    <ModalContent w={{ base: 'xs', md: 'md' }} minHeight="lg">
+    <ModalContent
+      w={{ base: 'xs', md: 'md' }}
+      minHeight={isDeleteModal ? 'auto' : 'lg'}>
       <ModalHeader>
         <Stack w="full">
           <Heading textTransform="capitalize">{heading}</Heading>
