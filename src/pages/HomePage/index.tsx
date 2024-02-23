@@ -58,22 +58,30 @@ const HomePage = () => {
 
   const TablePatientLayout = () => {
     const [id, setId] = useState<string>('');
+
+    // Add new a patient
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const { mutate, isLoading } = useAddNewPatient();
+
+    const { data: dataPatientById, isLoading: isLoadingDataPatientById } =
+      useGetPatientById(id);
+
     const {
       isOpen: isOpenEditPatientModal,
       onOpen: onOpenEditPatientModal,
       onClose: onCloseEditPatientModal
     } = useDisclosure();
+
+    // Delete a patient
     const {
       isOpen: isOpenDeletePatientModal,
       onOpen: onOpenDeletePatientModal,
       onClose: onCloseDeletePatientModal
     } = useDisclosure();
-    const { mutate, isLoading } = useAddNewPatient();
-    const { data: dataPatientById, isLoading: isLoadingDataPatientById } =
-      useGetPatientById(id);
-    const { mutate: handleDelete, isLoading: isLoadingDeletePatient } =
-      useDeletePatient(id);
+    const {
+      mutate: handleDeletePatientByApi,
+      isLoading: isLoadingDeletePatient
+    } = useDeletePatient(id);
 
     const handleAddNewPatient = useCallback(
       (payload: Patient) => {
@@ -94,7 +102,7 @@ const HomePage = () => {
     };
 
     const handleDeletePatient = () => {
-      handleDelete();
+      handleDeletePatientByApi();
 
       if (!isLoadingDeletePatient) {
         return onCloseDeletePatientModal();
