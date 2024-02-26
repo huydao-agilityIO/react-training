@@ -62,6 +62,7 @@ const HomePage = () => {
 
   const TablePatientLayout = () => {
     const [id, setId] = useState<string>('');
+    const [isEdit, setIsEdit] = useState<boolean>(false);
 
     // Add new a patient
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -74,8 +75,6 @@ const HomePage = () => {
       onOpen: onOpenEditPatientModal,
       onClose: onCloseEditPatientModal
     } = useDisclosure();
-    const { data: dataPatientById, isLoading: isLoadingDataPatientById } =
-      useGetPatientById(id, onOpenEditPatientModal);
     const { mutate: handleEdit, isLoading: isLoadingEdit } = useEditPatient(id);
 
     // Delete a patient
@@ -84,6 +83,11 @@ const HomePage = () => {
       onOpen: onOpenDeletePatientModal,
       onClose: onCloseDeletePatientModal
     } = useDisclosure();
+    const { data: dataPatientById, isLoading: isLoadingDataPatientById } =
+      useGetPatientById(
+        id,
+        isEdit ? onOpenEditPatientModal : onOpenDeletePatientModal
+      );
     const {
       mutate: handleDeletePatientByApi,
       isLoading: isLoadingDeletePatient
@@ -97,7 +101,10 @@ const HomePage = () => {
       [handleAdd, onClose]
     );
 
-    const handleOpenModalPatient = (idPatient: string) => setId(idPatient);
+    const handleOpenModalPatient = (idPatient: string) => {
+      setId(idPatient);
+      setIsEdit(true);
+    };
 
     const handleCloseModalEditPatient = () => {
       setId('');
@@ -119,7 +126,12 @@ const HomePage = () => {
 
     const handleOpenDeletePatientModal = (idPatient: string) => {
       setId(idPatient);
-      onOpenDeletePatientModal();
+      setIsEdit(false);
+    };
+
+    const handleCloseModalDeletePatient = () => {
+      setId('');
+      onCloseDeletePatientModal();
     };
 
     const handleDeletePatient = () => {
@@ -152,12 +164,14 @@ const HomePage = () => {
             onSubmit={handleEditPatient}
           />
         )}
-        <DeletePatientModal
-          isOpenModalDeletePatient={isOpenDeletePatientModal}
-          onCloseModalDeletePatient={onCloseDeletePatientModal}
-          onDeletePatient={handleDeletePatient}
-          isLoadingDeletePatient={isLoadingDeletePatient}
-        />
+        {dataPatientById && !isLoadingDeletePatient && (
+          <DeletePatientModal
+            isOpenModalDeletePatient={isOpenDeletePatientModal}
+            onCloseModalDeletePatient={handleCloseModalDeletePatient}
+            onDeletePatient={handleDeletePatient}
+            isLoadingDeletePatient={isLoadingDeletePatient}
+          />
+        )}
       </>
     );
   };
