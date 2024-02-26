@@ -2,7 +2,7 @@ import { ChangeEventHandler } from 'react';
 import { FormControl, FormErrorMessage, Input } from '@chakra-ui/react';
 
 interface FormGroupControlProps {
-  type: string;
+  type?: string;
   id?: string;
   placeholder?: string;
   value?: string | number;
@@ -13,7 +13,7 @@ interface FormGroupControlProps {
 }
 
 const FormGroupControl = ({
-  type,
+  type = 'text',
   id = '',
   placeholder = '',
   value = '',

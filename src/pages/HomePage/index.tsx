@@ -4,6 +4,7 @@ import { useDisclosure } from '@chakra-ui/react';
 // Apis
 import {
   useAddNewPatient,
+  useEditPatient,
   useGetPatientById,
   useGetTablePatient,
   useGetTablePatientByPagination
@@ -22,8 +23,10 @@ import TablePatient from '@shared/pages/HomePage/TablePatient';
 const HomePage = () => {
   const TablePatientWrapper = ({
     onOpen,
+    isLoadingOpenEditModal,
     onOpenEditPatientModal
   }: {
+    isLoadingOpenEditModal: boolean;
     onOpen: () => void;
     onOpenEditPatientModal: (id: string) => void;
   }) => {
@@ -44,6 +47,7 @@ const HomePage = () => {
         onChangePage={setCurrentPage}
         onOpenCreatePatientModal={onOpen}
         onOpenEditPatientModal={onOpenEditPatientModal}
+        isLoadingOpenEditModal={isLoadingOpenEditModal}
       />
     );
   };
@@ -58,7 +62,8 @@ const HomePage = () => {
     } = useDisclosure();
     const { mutate, isLoading } = useAddNewPatient();
     const { data: dataPatientById, isLoading: isLoadingDataPatientById } =
-      useGetPatientById(id);
+      useGetPatientById(id, onOpenEditPatientModal);
+    const { mutate: handleEdit, isLoading: isLoadingEdit } = useEditPatient(id);
 
     const handleAddNewPatient = useCallback(
       (payload: Patient) => {
@@ -68,16 +73,32 @@ const HomePage = () => {
       [mutate, onClose]
     );
 
-    const handleOpenModalPatient = (idPatient: string) => {
-      setId(idPatient);
-      return onOpenEditPatientModal();
+    const handleOpenModalPatient = (idPatient: string) => setId(idPatient);
+
+    const handleCloseModalPatient = () => {
+      setId('');
+      return onCloseEditPatientModal();
     };
+
+    const handleEditPatient = useCallback(
+      (payload: Patient) => {
+        setId('');
+        handleEdit(payload);
+
+        if (!isLoadingEdit) {
+          onCloseEditPatientModal();
+        }
+      },
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [handleEdit, isLoadingEdit]
+    );
 
     return (
       <>
         <TablePatientWrapper
           onOpen={onOpen}
           onOpenEditPatientModal={handleOpenModalPatient}
+          isLoadingOpenEditModal={isLoadingDataPatientById}
         />
         <CreatePatientForm
           isOpen={isOpen}
@@ -85,13 +106,15 @@ const HomePage = () => {
           isLoading={isLoading}
           onSubmit={handleAddNewPatient}
         />
-        <EditPatientForm
-          dataPatientById={dataPatientById}
-          isLoadingFetchDataInitial={isLoadingDataPatientById}
-          isOpen={isOpenEditPatientModal}
-          onClose={onCloseEditPatientModal}
-          onSubmit={() => {}}
-        />
+        {dataPatientById && !isLoadingEdit && (
+          <EditPatientForm
+            dataPatientById={dataPatientById}
+            isEditing={isLoadingEdit}
+            isOpen={isOpenEditPatientModal}
+            onClose={handleCloseModalPatient}
+            onSubmit={handleEditPatient}
+          />
+        )}
       </>
     );
   };

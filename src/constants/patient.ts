@@ -16,7 +16,7 @@ export const PATIENT: Patient = {
   lastName: 'Glover',
   department: 'Outdoors',
   appointmentDate: '2024-02-04T12:51:18.506Z',
-  serialNumber: '10017009',
+  serialNumber: 10017009,
   amount: 59786,
   id: '1'
 };

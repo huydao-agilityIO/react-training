@@ -1,5 +1,17 @@
 import { ReactNode, memo, useCallback } from 'react';
-import { Avatar, Button, HStack, Heading, Stack } from '@chakra-ui/react';
+import {
+  Avatar,
+  Button,
+  Center,
+  HStack,
+  Heading,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalOverlay,
+  Spinner,
+  Stack
+} from '@chakra-ui/react';
 
 // Constants
 import { ACTION_MAPPING, PATIENT_HEADING_MAPPING } from '@shared/constants';
@@ -30,6 +42,7 @@ interface TablePatientProps {
   currentPage: number;
   totalPage: number;
   isLoading?: boolean;
+  isLoadingOpenEditModal?: boolean;
   onOpenCreatePatientModal?: () => void;
   onOpenEditPatientModal?: (id: string) => void;
   onChangePage: (pageNumber: number) => void;
@@ -40,6 +53,7 @@ const TablePatient = ({
   currentPage,
   totalPage,
   isLoading = false,
+  isLoadingOpenEditModal = false,
   onOpenCreatePatientModal,
   onOpenEditPatientModal,
   onChangePage
@@ -161,29 +175,41 @@ const TablePatient = ({
   });
 
   return (
-    <Stack bg="light.300" p={{ base: 4, md: 7.5 }} borderRadius="xl">
-      <HStack justifyContent="space-between">
-        <Heading size="md" variant="secondary" alignItems="center">
-          Patients
-        </Heading>
-        <HStack>
-          <SearchBar
-            onChange={() => {}}
-            placeholder="Search here..."
-            leftContent={<SearchIcon />}
-          />
-          <Button onClick={onOpenCreatePatientModal}>Add Patient</Button>
+    <>
+      <Stack bg="light.300" p={{ base: 4, md: 7.5 }} borderRadius="xl">
+        <HStack justifyContent="space-between">
+          <Heading size="md" variant="secondary" alignItems="center">
+            Patients
+          </Heading>
+          <HStack>
+            <SearchBar
+              onChange={() => {}}
+              placeholder="Search here..."
+              leftContent={<SearchIcon />}
+            />
+            <Button onClick={onOpenCreatePatientModal}>Add Patient</Button>
+          </HStack>
         </HStack>
-      </HStack>
-      <DataTable
-        data={formatData}
-        currentPage={currentPage}
-        totalPage={totalPage}
-        headingMapping={PATIENT_HEADING_MAPPING}
-        isLoading={isLoading}
-        onChangePage={onChangePage}
-      />
-    </Stack>
+        <DataTable
+          data={formatData}
+          currentPage={currentPage}
+          totalPage={totalPage}
+          headingMapping={PATIENT_HEADING_MAPPING}
+          isLoading={isLoading}
+          onChangePage={onChangePage}
+        />
+      </Stack>
+      <Modal isCentered isOpen={isLoadingOpenEditModal} onClose={() => {}}>
+        <ModalOverlay />
+        <ModalContent bg="transparent" shadow="none">
+          <ModalBody>
+            <Center>
+              <Spinner size="lg" />
+            </Center>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+    </>
   );
 };
 
