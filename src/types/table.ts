@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 export interface ContentMapping {
   customRender?: () => ReactNode;
-  value?: string;
+  value?: string | number;
   cellStyle?: Record<string, string | number>;
 }
 

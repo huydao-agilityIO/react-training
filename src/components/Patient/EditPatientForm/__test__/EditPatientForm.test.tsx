@@ -20,7 +20,6 @@ describe('EditPatientForm', () => {
     <FormProvider {...result.current}>
       <EditPatientForm
         isOpen={true}
-        isLoadingFetchDataInitial={false}
         dataPatientById={PATIENT}
         onClose={onCloseMock}
         onSubmit={onSubmitMock}

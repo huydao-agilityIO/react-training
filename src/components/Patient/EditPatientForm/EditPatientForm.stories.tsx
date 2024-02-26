@@ -21,7 +21,6 @@ const meta: Meta<typeof EditPatientForm> = {
   ],
   tags: ['autodocs'],
   args: {
-    isLoadingFetchDataInitial: false,
     isOpen: true
   }
 };

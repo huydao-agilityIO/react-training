@@ -14,6 +14,6 @@ export type Patient = {
   lastName: string;
   department: string;
   appointmentDate: string;
-  serialNumber: string;
+  serialNumber: number;
   amount: number;
 };
