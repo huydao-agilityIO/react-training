@@ -98,14 +98,14 @@ const HomePage = () => {
 
     const handleOpenDeletePatientModal = (idPatient: string) => {
       setId(idPatient);
-      return onOpenDeletePatientModal();
+      onOpenDeletePatientModal();
     };
 
     const handleDeletePatient = () => {
       handleDeletePatientByApi();
 
       if (!isLoadingDeletePatient) {
-        return onCloseDeletePatientModal();
+        onCloseDeletePatientModal();
       }
     };
 
