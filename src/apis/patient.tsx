@@ -7,7 +7,7 @@ import {
 } from '@shared/constants';
 
 // Services
-import { getData, postData, putData, deleteData } from '@shared/services';
+import { deleteData, getData, postData, putData } from '@shared/services';
 
 // Types
 import { Patient } from '@shared/types';
