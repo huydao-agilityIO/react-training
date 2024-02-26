@@ -7,7 +7,7 @@ import {
 } from '@shared/constants';
 
 // Services
-import { getData, postData, putData } from '@shared/services';
+import { deleteData, getData, postData, putData } from '@shared/services';
 
 // Types
 import { Patient } from '@shared/types';
@@ -16,6 +16,22 @@ const getDataByPage = (page: number) =>
   getData(
     `${API_HOSPITAL_MANAGEMENT.HOSPITAL_MANAGEMENT_PATIENT}?page=${page}&limit=${LIMIT_PATIENT_TABLE}`
   );
+
+export const useDeletePatient = (id: string) => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationKey: ['patient', id],
+    mutationFn: () => {
+      return deleteData(
+        `${API_HOSPITAL_MANAGEMENT.HOSPITAL_MANAGEMENT_PATIENT}/${id}`
+      );
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['patient'] });
+    }
+  });
+};
 
 export const useGetTablePatient = () => {
   const { data, error, isLoading, ...rest } = useQuery<Patient[]>({
