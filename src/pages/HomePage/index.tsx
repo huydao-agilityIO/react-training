@@ -5,6 +5,7 @@ import { useDisclosure } from '@chakra-ui/react';
 import {
   useAddNewPatient,
   useEditPatient,
+  useDeletePatient,
   useGetPatientById,
   useGetTablePatient,
   useGetTablePatientByPagination
@@ -17,18 +18,24 @@ import { Patient } from '@shared/types';
 import { DashboardLayout } from '@shared/layouts';
 
 // Components
-import { CreatePatientForm, EditPatientForm } from '@shared/components';
+import {
+  CreatePatientForm,
+  DeletePatientModal,
+  EditPatientForm
+} from '@shared/components';
 import TablePatient from '@shared/pages/HomePage/TablePatient';
 
 const HomePage = () => {
   const TablePatientWrapper = ({
     onOpen,
     isLoadingOpenEditModal,
-    onOpenEditPatientModal
+    onOpenEditPatientModal,
+    onOpenDeletePatientModal
   }: {
     isLoadingOpenEditModal: boolean;
     onOpen: () => void;
     onOpenEditPatientModal: (id: string) => void;
+    onOpenDeletePatientModal: (id: string) => void;
   }) => {
     const [currentPage, setCurrentPage] = useState(1);
     // Fetch all data to calc page number
@@ -48,22 +55,38 @@ const HomePage = () => {
         onOpenCreatePatientModal={onOpen}
         onOpenEditPatientModal={onOpenEditPatientModal}
         isLoadingOpenEditModal={isLoadingOpenEditModal}
+        onOpenDeletePatientModal={onOpenDeletePatientModal}
       />
     );
   };
 
   const TablePatientLayout = () => {
     const [id, setId] = useState<string>('');
+
+    // Add new a patient
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const { mutate, isLoading } = useAddNewPatient();
+
+    // Edit a patient
     const {
       isOpen: isOpenEditPatientModal,
       onOpen: onOpenEditPatientModal,
       onClose: onCloseEditPatientModal
     } = useDisclosure();
-    const { mutate, isLoading } = useAddNewPatient();
     const { data: dataPatientById, isLoading: isLoadingDataPatientById } =
       useGetPatientById(id, onOpenEditPatientModal);
     const { mutate: handleEdit, isLoading: isLoadingEdit } = useEditPatient(id);
+
+    // Delete a patient
+    const {
+      isOpen: isOpenDeletePatientModal,
+      onOpen: onOpenDeletePatientModal,
+      onClose: onCloseDeletePatientModal
+    } = useDisclosure();
+    const {
+      mutate: handleDeletePatientByApi,
+      isLoading: isLoadingDeletePatient
+    } = useDeletePatient(id);
 
     const handleAddNewPatient = useCallback(
       (payload: Patient) => {
@@ -75,7 +98,7 @@ const HomePage = () => {
 
     const handleOpenModalPatient = (idPatient: string) => setId(idPatient);
 
-    const handleCloseModalPatient = () => {
+    const handleCloseModalEditPatient = () => {
       setId('');
       return onCloseEditPatientModal();
     };
@@ -92,6 +115,18 @@ const HomePage = () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       [handleEdit, isLoadingEdit]
     );
+    const handleOpenDeletePatientModal = (idPatient: string) => {
+      setId(idPatient);
+      onOpenDeletePatientModal();
+    };
+
+    const handleDeletePatient = () => {
+      handleDeletePatientByApi();
+
+      if (!isLoadingDeletePatient) {
+        onCloseDeletePatientModal();
+      }
+    };
 
     return (
       <>
@@ -99,6 +134,7 @@ const HomePage = () => {
           onOpen={onOpen}
           onOpenEditPatientModal={handleOpenModalPatient}
           isLoadingOpenEditModal={isLoadingDataPatientById}
+          onOpenDeletePatientModal={handleOpenDeletePatientModal}
         />
         <CreatePatientForm
           isOpen={isOpen}
@@ -109,12 +145,17 @@ const HomePage = () => {
         {dataPatientById && !isLoadingEdit && (
           <EditPatientForm
             dataPatientById={dataPatientById}
-            isEditing={isLoadingEdit}
             isOpen={isOpenEditPatientModal}
-            onClose={handleCloseModalPatient}
+            onClose={handleCloseModalEditPatient}
             onSubmit={handleEditPatient}
           />
         )}
+        <DeletePatientModal
+          isOpenModalDeletePatient={isOpenDeletePatientModal}
+          onCloseModalDeletePatient={onCloseDeletePatientModal}
+          onDeletePatient={handleDeletePatient}
+          isLoadingDeletePatient={isLoadingDeletePatient}
+        />
       </>
     );
   };
