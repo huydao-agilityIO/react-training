@@ -62,15 +62,17 @@ const DataTable = ({
             </Tr>
           ))}
         </Tbody>
-        <TableCaption>
-          <Center marginTop={5}>
-            <Pagination
-              currentPage={currentPage}
-              totalPage={totalPage}
-              onChangePage={onChangePage}
-            />
-          </Center>
-        </TableCaption>
+        {!!totalPage && (
+          <TableCaption>
+            <Center marginTop={5}>
+              <Pagination
+                currentPage={currentPage}
+                totalPage={totalPage}
+                onChangePage={onChangePage}
+              />
+            </Center>
+          </TableCaption>
+        )}
       </>
     );
   }, [currentPage, data, isLoading, onChangePage, totalPage]);

@@ -1,3 +1,4 @@
+import { ChangeEventHandler } from 'react';
 import {
   Drawer,
   DrawerBody,
@@ -33,7 +34,7 @@ import { Dropdown, SearchBar, Sidebar } from '@shared/components';
 
 interface HeaderProps {
   fullName?: string;
-  onSearch: (value: string) => void;
+  onSearch: ChangeEventHandler<HTMLInputElement>;
 }
 
 const Header = ({ fullName, onSearch }: HeaderProps) => {

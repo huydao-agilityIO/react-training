@@ -1,4 +1,4 @@
-import { ReactNode, memo } from 'react';
+import { ChangeEventHandler, ReactNode, memo } from 'react';
 import { Show, Stack } from '@chakra-ui/react';
 
 // Constants
@@ -15,7 +15,7 @@ import { Header, Sidebar } from '@shared/components';
 
 interface DashboardLayoutProps {
   children: ReactNode;
-  onSearch: (value: string) => void;
+  onSearch: ChangeEventHandler<HTMLInputElement>;
 }
 
 const DashboardLayout = ({ children, onSearch }: DashboardLayoutProps) => {

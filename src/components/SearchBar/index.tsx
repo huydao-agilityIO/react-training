@@ -1,4 +1,4 @@
-import { ChangeEvent, ReactNode, memo, useCallback } from 'react';
+import { ChangeEventHandler, ReactNode, memo } from 'react';
 import {
   Input,
   InputGroup,
@@ -10,7 +10,7 @@ interface SearchBarProps {
   placeholder?: string;
   leftContent?: ReactNode;
   rightContent?: ReactNode;
-  onChange: (value: string) => void;
+  onChange: ChangeEventHandler<HTMLInputElement>;
 }
 
 const SearchBar = ({
@@ -19,18 +19,6 @@ const SearchBar = ({
   rightContent = '',
   onChange
 }: SearchBarProps) => {
-  /**
-   * The function handles change value search bar
-   */
-  const handleChangeValue = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      const value: string = event.target.value;
-
-      value && onChange(value);
-    },
-    [onChange]
-  );
-
   return (
     <InputGroup alignItems="center" size="md" w="full">
       {leftContent && (
@@ -49,7 +37,7 @@ const SearchBar = ({
         paddingLeft={leftContent ? { base: 10, md: 20 } : 10}
         paddingRight={rightContent ? { base: 10, md: 20 } : 10}
         h={55}
-        onChange={handleChangeValue}
+        onChange={onChange}
       />
       {rightContent && (
         <InputRightElement
