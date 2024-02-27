@@ -1,0 +1,200 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List Card match list card with snap shot 1`] = `
+<div>
+  <ul
+    class="css-1hd8z41"
+    role="list"
+  >
+    <li
+      class="css-0"
+    >
+      <div
+        class="chakra-card css-1nnsn8o"
+      >
+        <span
+          class="chakra-avatar css-18scjt5"
+        >
+          <div
+            aria-label="Jovan Crist"
+            class="chakra-avatar__initials css-1ebyn6"
+            role="img"
+          >
+            JC
+          </div>
+        </span>
+        <div
+          class="chakra-card__header css-old1by"
+        >
+          <h2
+            class="chakra-heading css-1cj8ah8"
+          >
+            Jovan Crist
+          </h2>
+        </div>
+        <div
+          class="chakra-card__body css-1830czf"
+        >
+          <p
+            class="chakra-text css-340eiw"
+          >
+            description 1
+          </p>
+        </div>
+      </div>
+    </li>
+    <li
+      class="css-0"
+    >
+      <div
+        class="chakra-card css-1nnsn8o"
+      >
+        <span
+          class="chakra-avatar css-10wf0hw"
+        >
+          <div
+            aria-label="Lazaro Schumm"
+            class="chakra-avatar__initials css-1ebyn6"
+            role="img"
+          >
+            LS
+          </div>
+        </span>
+        <div
+          class="chakra-card__header css-old1by"
+        >
+          <h2
+            class="chakra-heading css-1cj8ah8"
+          >
+            Lazaro Schumm
+          </h2>
+        </div>
+        <div
+          class="chakra-card__body css-1830czf"
+        >
+          <p
+            class="chakra-text css-340eiw"
+          >
+            description 2
+          </p>
+        </div>
+      </div>
+    </li>
+    <li
+      class="css-0"
+    >
+      <div
+        class="chakra-card css-1nnsn8o"
+      >
+        <span
+          class="chakra-avatar css-5pqtwz"
+        >
+          <div
+            aria-label="Vidal Russel"
+            class="chakra-avatar__initials css-1ebyn6"
+            role="img"
+          >
+            VR
+          </div>
+        </span>
+        <div
+          class="chakra-card__header css-old1by"
+        >
+          <h2
+            class="chakra-heading css-1cj8ah8"
+          >
+            Vidal Russel
+          </h2>
+        </div>
+        <div
+          class="chakra-card__body css-1830czf"
+        >
+          <p
+            class="chakra-text css-340eiw"
+          >
+            description 3
+          </p>
+        </div>
+      </div>
+    </li>
+    <li
+      class="css-0"
+    >
+      <div
+        class="chakra-card css-1nnsn8o"
+      >
+        <span
+          class="chakra-avatar css-1jgi1su"
+        >
+          <div
+            aria-label="Jed Kovacek"
+            class="chakra-avatar__initials css-1ebyn6"
+            role="img"
+          >
+            JK
+          </div>
+        </span>
+        <div
+          class="chakra-card__header css-old1by"
+        >
+          <h2
+            class="chakra-heading css-1cj8ah8"
+          >
+            Jed Kovacek
+          </h2>
+        </div>
+        <div
+          class="chakra-card__body css-1830czf"
+        >
+          <p
+            class="chakra-text css-340eiw"
+          >
+            description 4
+          </p>
+        </div>
+      </div>
+    </li>
+    <li
+      class="css-0"
+    >
+      <div
+        class="chakra-card css-1nnsn8o"
+      >
+        <span
+          class="chakra-avatar css-1tjkhxb"
+        >
+          <div
+            aria-label="Tatyana Koepp"
+            class="chakra-avatar__initials css-1ebyn6"
+            role="img"
+          >
+            TK
+          </div>
+        </span>
+        <div
+          class="chakra-card__header css-old1by"
+        >
+          <h2
+            class="chakra-heading css-1cj8ah8"
+          >
+            Tatyana Koepp
+          </h2>
+        </div>
+        <div
+          class="chakra-card__body css-1830czf"
+        >
+          <p
+            class="chakra-text css-340eiw"
+          >
+            description 5
+          </p>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</div>
+`;
