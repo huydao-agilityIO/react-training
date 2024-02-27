@@ -12,10 +12,15 @@ import { deleteData, getData, postData, putData } from '@shared/services';
 // Types
 import { Patient } from '@shared/types';
 
-const getDataByPage = (page: number) =>
-  getData(
-    `${API_HOSPITAL_MANAGEMENT.HOSPITAL_MANAGEMENT_PATIENT}?page=${page}&limit=${LIMIT_PATIENT_TABLE}`
+const getDataByPage = (page: number, searchTerm: string) => {
+  const pagination: string = searchTerm
+    ? ''
+    : `?page=${page}&limit=${LIMIT_PATIENT_TABLE}`;
+
+  return getData(
+    `${API_HOSPITAL_MANAGEMENT.HOSPITAL_MANAGEMENT_PATIENT}${pagination}`
   );
+};
 
 export const useGetTablePatient = () => {
   const { data, error, isLoading, ...rest } = useQuery<Patient[]>({
@@ -33,10 +38,13 @@ export const useGetTablePatient = () => {
   };
 };
 
-export const useGetTablePatientByPagination = (page: number) =>
+export const useGetTablePatientByPagination = (
+  page: number,
+  searchTerm: string
+) =>
   useQuery<Patient[]>({
-    queryFn: () => getDataByPage(page),
-    queryKey: ['patient', page],
+    queryFn: () => getDataByPage(page, searchTerm),
+    queryKey: ['patient', page, searchTerm],
     keepPreviousData: true
   });
 
