@@ -25,3 +25,9 @@ export type HospitalStaff = {
   lastName: string;
   description: string;
 };
+
+export type RecentActivity = {
+  id: string;
+  time: string;
+  action: string;
+};
