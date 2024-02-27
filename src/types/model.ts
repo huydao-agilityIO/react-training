@@ -17,3 +17,11 @@ export type Patient = {
   serialNumber: number;
   amount: number;
 };
+
+export type HospitalStaff = {
+  id: string;
+  urlAvatar: string;
+  firstName: string;
+  lastName: string;
+  description: string;
+};
