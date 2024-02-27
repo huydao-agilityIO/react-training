@@ -6,3 +6,4 @@ export * from './patient';
 export * from './route';
 export * from './sidebar';
 export * from './validate';
+export * from './recentActivity';
