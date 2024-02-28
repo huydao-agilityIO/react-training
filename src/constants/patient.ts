@@ -3,12 +3,6 @@ import { HeadingMapping, Patient } from '@shared/types';
 
 export const LIMIT_PATIENT_TABLE = 10;
 
-export const ACTION_MAPPING = [
-  { label: 'Create' },
-  { label: 'Edit' },
-  { label: 'Delete' }
-];
-
 export const PATIENT: Patient = {
   urlAvatar:
     'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1238.jpg',
@@ -16,7 +10,7 @@ export const PATIENT: Patient = {
   lastName: 'Glover',
   department: 'Outdoors',
   appointmentDate: '2024-02-04T12:51:18.506Z',
-  serialNumber: '10017009',
+  serialNumber: 10017009,
   amount: 59786,
   id: '1'
 };

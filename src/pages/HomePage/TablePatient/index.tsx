@@ -1,14 +1,20 @@
 import { ReactNode, memo, useCallback } from 'react';
-import { Avatar, Button, HStack, Heading, Stack } from '@chakra-ui/react';
+import {
+  Avatar,
+  Center,
+  HStack,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalOverlay,
+  Spinner
+} from '@chakra-ui/react';
 
 // Constants
-import { ACTION_MAPPING, PATIENT_HEADING_MAPPING } from '@shared/constants';
+import { PATIENT_HEADING_MAPPING } from '@shared/constants';
 
 // Types
 import { ContentMapping, Patient } from '@shared/types';
-
-// Svg
-import { SearchIcon } from '@shared/SVG';
 
 // Utils
 import {
@@ -18,20 +24,16 @@ import {
 } from '@shared/utils';
 
 // Components
-import {
-  ActionDropdown,
-  DataTable,
-  SearchBar,
-  TextHelper
-} from '@shared/components';
+import { ActionDropdown, DataTable, TextHelper } from '@shared/components';
 
 interface TablePatientProps {
   data: Patient[];
   currentPage: number;
   totalPage: number;
   isLoading?: boolean;
-  onOpenCreatePatientModal?: () => void;
+  isLoadingOpenEditModal?: boolean;
   onOpenEditPatientModal?: (id: string) => void;
+  onOpenDeletePatientModal?: (id: string) => void;
   onChangePage: (pageNumber: number) => void;
 }
 
@@ -40,8 +42,9 @@ const TablePatient = ({
   currentPage,
   totalPage,
   isLoading = false,
-  onOpenCreatePatientModal,
+  isLoadingOpenEditModal = false,
   onOpenEditPatientModal,
+  onOpenDeletePatientModal,
   onChangePage
 }: TablePatientProps) => {
   const renderPatientName = useCallback(
@@ -63,15 +66,15 @@ const TablePatient = ({
   const renderAction = useCallback(
     (id: string) => {
       const handleOpenEditPatientModal = () => onOpenEditPatientModal?.(id);
+      const handleOpenDeletePatientModal = () => onOpenDeletePatientModal?.(id);
+      const ACTION_MAPPING = [
+        { label: 'Edit', onClick: handleOpenEditPatientModal },
+        { label: 'Delete', onClick: handleOpenDeletePatientModal }
+      ];
 
-      return (
-        <ActionDropdown
-          actions={ACTION_MAPPING}
-          onOpenModal={handleOpenEditPatientModal}
-        />
-      );
+      return <ActionDropdown actions={ACTION_MAPPING} />;
     },
-    [onOpenEditPatientModal]
+    [onOpenDeletePatientModal, onOpenEditPatientModal]
   );
 
   const PATIENT_CONTENT_MAPPING = useCallback(
@@ -161,20 +164,7 @@ const TablePatient = ({
   });
 
   return (
-    <Stack bg="light.300" p={{ base: 4, md: 7.5 }} borderRadius="xl">
-      <HStack justifyContent="space-between">
-        <Heading size="md" variant="secondary" alignItems="center">
-          Patients
-        </Heading>
-        <HStack>
-          <SearchBar
-            onChange={() => {}}
-            placeholder="Search here..."
-            leftContent={<SearchIcon />}
-          />
-          <Button onClick={onOpenCreatePatientModal}>Add Patient</Button>
-        </HStack>
-      </HStack>
+    <>
       <DataTable
         data={formatData}
         currentPage={currentPage}
@@ -183,7 +173,17 @@ const TablePatient = ({
         isLoading={isLoading}
         onChangePage={onChangePage}
       />
-    </Stack>
+      <Modal isCentered isOpen={isLoadingOpenEditModal} onClose={() => {}}>
+        <ModalOverlay />
+        <ModalContent bg="transparent" shadow="none">
+          <ModalBody>
+            <Center>
+              <Spinner size="lg" />
+            </Center>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+    </>
   );
 };
 

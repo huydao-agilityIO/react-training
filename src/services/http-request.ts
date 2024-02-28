@@ -48,3 +48,50 @@ export async function postData<T>(url: string, dataField: T) {
 
   return response;
 }
+/**
+ * The function post data
+ *
+ * @param url - The API
+ * @param data - The value
+ */
+export async function putData<T>(url: string, dataField: T) {
+  const response = await fetch(url, {
+    method: METHOD.PUT,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(dataField)
+  })
+    .then((res) => {
+      if (!res.ok) {
+        return res.text();
+      }
+      return res.json();
+    })
+    .catch(() => {
+      throw new Error(ERROR_MESSAGES_SERVICES.END_POINT);
+    });
+
+  return response;
+}
+
+/**
+ * The function post data
+ *
+ * @param url - The API
+ */
+export async function deleteData(url: string) {
+  const response = await fetch(url, {
+    method: METHOD.DELETE,
+    headers: { 'Content-Type': 'application/json' }
+  })
+    .then((res) => {
+      if (!res.ok) {
+        return res.text();
+      }
+      return res.json();
+    })
+    .catch(() => {
+      throw new Error(ERROR_MESSAGES_SERVICES.END_POINT);
+    });
+
+  return response;
+}

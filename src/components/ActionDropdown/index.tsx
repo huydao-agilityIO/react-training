@@ -16,14 +16,14 @@ import { EllipsisVertical } from '@shared/SVG';
 
 interface Action {
   label: string;
+  onClick?: () => void;
 }
 
 interface ActionDropdownProps {
   actions: Action[];
-  onOpenModal: () => void;
 }
 
-const ActionDropdown = ({ actions, onOpenModal }: ActionDropdownProps) => {
+const ActionDropdown = ({ actions }: ActionDropdownProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -44,7 +44,7 @@ const ActionDropdown = ({ actions, onOpenModal }: ActionDropdownProps) => {
         <PopoverBody>
           <Stack>
             <List>
-              {actions?.map(({ label }) => (
+              {actions?.map(({ label, onClick }) => (
                 <ListItem
                   fontSize="xs"
                   fontWeight="light"
@@ -56,7 +56,7 @@ const ActionDropdown = ({ actions, onOpenModal }: ActionDropdownProps) => {
                     color: 'primary.300'
                   }}
                   key={label}
-                  onClick={onOpenModal}>
+                  onClick={onClick}>
                   {label}
                 </ListItem>
               ))}

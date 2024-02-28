@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Recent Activity list match snap shot 1`] = `
+<div>
+  <ul
+    class="css-10pdzfq"
+    role="list"
+  >
+    <li
+      class="css-577btj"
+    >
+      <div
+        class="css-apdv1i"
+      />
+      <div
+        class="css-0"
+      >
+        <h2
+          class="chakra-heading css-1s914pu"
+        >
+          5 min ago
+        </h2>
+        <p
+          class="chakra-text css-zffddc"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque
+        </p>
+      </div>
+    </li>
+    <li
+      class="css-577btj"
+    >
+      <div
+        class="css-apdv1i"
+      />
+      <div
+        class="css-0"
+      >
+        <h2
+          class="chakra-heading css-1s914pu"
+        >
+          10 min ago
+        </h2>
+        <p
+          class="chakra-text css-zffddc"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque
+        </p>
+      </div>
+    </li>
+    <li
+      class="css-577btj"
+    >
+      <div
+        class="css-apdv1i"
+      />
+      <div
+        class="css-0"
+      >
+        <h2
+          class="chakra-heading css-1s914pu"
+        >
+          15 min ago
+        </h2>
+        <p
+          class="chakra-text css-zffddc"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque
+        </p>
+      </div>
+    </li>
+  </ul>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</div>
+`;

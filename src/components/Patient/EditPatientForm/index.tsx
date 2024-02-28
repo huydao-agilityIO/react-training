@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Button, Center, HStack, Spinner } from '@chakra-ui/react';
 import dayjs from 'dayjs';
@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 import { Patient } from '@shared/types';
 
 // Utils
-import { VALIDATION_FORM_PATIENT } from '@shared/utils';
+import { VALIDATION_FORM_PATIENT, formatValueInputNumber } from '@shared/utils';
 
 // Components
 import { FormGroupControl } from '@shared/components';
@@ -15,8 +15,7 @@ import PatientFormContainer from '../PatientFormContainer';
 
 interface EditPatientFormProps {
   isOpen: boolean;
-  isLoading?: boolean;
-  isLoadingFetchDataInitial?: boolean;
+  isEditing?: boolean;
   dataPatientById?: Patient;
   errorResponseAPI?: string;
   onClose: () => void;
@@ -25,8 +24,7 @@ interface EditPatientFormProps {
 
 const EditPatientForm = ({
   isOpen,
-  isLoading = false,
-  isLoadingFetchDataInitial = true,
+  isEditing = false,
   dataPatientById,
   errorResponseAPI = '',
   onClose,
@@ -40,32 +38,29 @@ const EditPatientForm = ({
     serialNumber,
     amount
   } = (dataPatientById as Patient) || {};
-
-  const { control, setValue, handleSubmit } = useForm<Patient>({
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { dirtyFields }
+  } = useForm<Patient>({
     defaultValues: {
-      firstName: firstName ?? '',
-      lastName: lastName ?? '',
-      department: department ?? '',
-      appointmentDate: appointmentDate ?? '',
-      serialNumber: serialNumber ?? '',
-      amount: amount ?? 0
+      firstName,
+      lastName,
+      department,
+      appointmentDate,
+      serialNumber,
+      amount
     }
   });
 
-  useEffect(() => {
-    if (!isLoadingFetchDataInitial) {
-      setValue('firstName', firstName);
-      setValue('lastName', lastName);
-      setValue('department', department);
-      setValue('appointmentDate', appointmentDate);
-      setValue('serialNumber', serialNumber);
-      setValue('amount', amount);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoadingFetchDataInitial]);
+  const handleClose = () => {
+    onClose();
+    reset();
+  };
 
   const renderCreatePatientBody = useCallback(() => {
-    return isLoadingFetchDataInitial ? (
+    return !dataPatientById ? (
       <Center minHeight={404}>
         <Spinner size="md" />
       </Center>
@@ -138,10 +133,7 @@ const EditPatientForm = ({
           name="appointmentDate"
           control={control}
           rules={VALIDATION_FORM_PATIENT.APPOINTMENT_DATE}
-          render={({
-            field: { value, onChange, ...rest },
-            fieldState: { error }
-          }) => {
+          render={({ field: { value, ...rest }, fieldState: { error } }) => {
             return (
               <FormGroupControl
                 type="date"
@@ -149,7 +141,6 @@ const EditPatientForm = ({
                 placeholder="Appointment Date"
                 value={dayjs(value).format('YYYY-MM-DD')}
                 errorMessage={error?.message}
-                onChange={(e) => onChange(e)}
                 {...rest}
               />
             );
@@ -165,12 +156,15 @@ const EditPatientForm = ({
           }) => {
             return (
               <FormGroupControl
-                type="number"
                 id="serialNumber"
                 placeholder="Serial Number"
                 value={value}
                 errorMessage={error?.message}
-                onChange={onChange}
+                onChange={(e) => {
+                  const value = formatValueInputNumber(e.target.value);
+
+                  onChange(value);
+                }}
                 {...rest}
               />
             );
@@ -186,12 +180,15 @@ const EditPatientForm = ({
           }) => {
             return (
               <FormGroupControl
-                type="number"
                 id="amount"
                 placeholder="Amount"
                 value={value}
                 errorMessage={error?.message}
-                onChange={onChange}
+                onChange={(e) => {
+                  const value = formatValueInputNumber(e.target.value);
+
+                  onChange(value);
+                }}
                 {...rest}
               />
             );
@@ -199,24 +196,31 @@ const EditPatientForm = ({
         />
       </>
     );
-  }, [control, isLoadingFetchDataInitial]);
+  }, [control, dataPatientById]);
 
   const renderCreatePatientFooter = useCallback(() => {
     return (
       <HStack gap={5}>
-        <Button variant="secondary" isDisabled={isLoading} onClick={onClose}>
+        <Button variant="secondary" isDisabled={isEditing} onClick={onClose}>
           Cancel
         </Button>
         <Button
           type="submit"
-          isLoading={isLoading}
-          isDisabled={!!errorResponseAPI}
+          isLoading={isEditing}
+          isDisabled={!!errorResponseAPI || !Object.keys(dirtyFields).length}
           onClick={handleSubmit(onSubmit)}>
           Submit
         </Button>
       </HStack>
     );
-  }, [errorResponseAPI, handleSubmit, isLoading, onClose, onSubmit]);
+  }, [
+    dirtyFields,
+    errorResponseAPI,
+    handleSubmit,
+    isEditing,
+    onClose,
+    onSubmit
+  ]);
 
   return (
     <PatientFormContainer
@@ -226,7 +230,7 @@ const EditPatientForm = ({
       footer={renderCreatePatientFooter()}
       heading="Edit patient"
       idForm="editPatientForm"
-      onClose={onClose}
+      onClose={handleClose}
     />
   );
 };

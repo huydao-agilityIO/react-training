@@ -29,3 +29,16 @@ export const convertDateToDayMonthYear = (date: string): string =>
 
 export const formatFullName = (firstName: string, lastName: string): string =>
   `${firstName} ${lastName}`;
+
+export const convertValueStringAndNumber = (
+  value: string | number
+): string | number => {
+  if (typeof value === 'string') {
+    return Number(value);
+  }
+
+  return value.toString();
+};
+
+export const formatValueInputNumber = (value: string): string =>
+  value?.replace(/[^0-9]/g, '');

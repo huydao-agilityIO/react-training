@@ -7,15 +7,20 @@ import {
 } from '@shared/constants';
 
 // Services
-import { getData, postData } from '@shared/services';
+import { deleteData, getData, postData, putData } from '@shared/services';
 
 // Types
 import { Patient } from '@shared/types';
 
-const getDataByPage = (page: number) =>
-  getData(
-    `${API_HOSPITAL_MANAGEMENT.HOSPITAL_MANAGEMENT_PATIENT}?page=${page}&limit=${LIMIT_PATIENT_TABLE}`
+const getDataByPage = (page: number, searchTerm: string) => {
+  const pagination: string = searchTerm
+    ? ''
+    : `?page=${page}&limit=${LIMIT_PATIENT_TABLE}`;
+
+  return getData(
+    `${API_HOSPITAL_MANAGEMENT.HOSPITAL_MANAGEMENT_PATIENT}${pagination}`
   );
+};
 
 export const useGetTablePatient = () => {
   const { data, error, isLoading, ...rest } = useQuery<Patient[]>({
@@ -33,19 +38,28 @@ export const useGetTablePatient = () => {
   };
 };
 
-export const useGetPatientById = (id: string) =>
+export const useGetTablePatientByPagination = (
+  page: number,
+  searchTerm: string
+) =>
+  useQuery<Patient[]>({
+    queryFn: () => getDataByPage(page, searchTerm),
+    queryKey: ['patient', page, searchTerm],
+    keepPreviousData: true
+  });
+
+export const useGetPatientById = (id: string, onSuccess: () => void) =>
   useQuery<Patient>({
     enabled: !!id,
     queryKey: ['patient', id],
-    queryFn: () =>
-      getData(`${API_HOSPITAL_MANAGEMENT.HOSPITAL_MANAGEMENT_PATIENT}/${id}`)
-  });
-
-export const useGetTablePatientByPagination = (page: number) =>
-  useQuery<Patient[]>({
-    queryFn: () => getDataByPage(page),
-    queryKey: ['patient', page],
-    keepPreviousData: true
+    queryFn: () => {
+      return getData(
+        `${API_HOSPITAL_MANAGEMENT.HOSPITAL_MANAGEMENT_PATIENT}/${id}`
+      );
+    },
+    onSuccess: () => {
+      onSuccess();
+    }
   });
 
 export const useAddNewPatient = () => {
@@ -57,6 +71,39 @@ export const useAddNewPatient = () => {
       return postData<Patient>(
         API_HOSPITAL_MANAGEMENT.HOSPITAL_MANAGEMENT_PATIENT,
         data
+      );
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['patient'] });
+    }
+  });
+};
+
+export const useEditPatient = (id: string) => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationKey: ['patient', id],
+    mutationFn: (data: Patient) => {
+      return putData<Patient>(
+        `${API_HOSPITAL_MANAGEMENT.HOSPITAL_MANAGEMENT_PATIENT}/${id}`,
+        data
+      );
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['patient'] });
+    }
+  });
+};
+
+export const useDeletePatient = (id: string) => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationKey: ['patient', id],
+    mutationFn: () => {
+      return deleteData(
+        `${API_HOSPITAL_MANAGEMENT.HOSPITAL_MANAGEMENT_PATIENT}/${id}`
       );
     },
     onSuccess: () => {

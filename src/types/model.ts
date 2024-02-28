@@ -14,6 +14,20 @@ export type Patient = {
   lastName: string;
   department: string;
   appointmentDate: string;
-  serialNumber: string;
+  serialNumber: number;
   amount: number;
+};
+
+export type HospitalStaff = {
+  id: string;
+  urlAvatar: string;
+  firstName: string;
+  lastName: string;
+  description: string;
+};
+
+export type RecentActivity = {
+  id: string;
+  time: string;
+  action: string;
 };
