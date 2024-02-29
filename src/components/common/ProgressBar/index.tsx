@@ -11,13 +11,14 @@ interface ProgressBarComponentProps extends ProgressProps {
   variant?: 'default' | 'success' | 'warning' | 'danger';
   label?: string;
   value?: number;
+  size?: string;
 }
 
 const ProgressBarComponent = ({
-  label,
-  variant,
-  value,
-  size
+  label = '',
+  variant = 'default',
+  value = 0,
+  size = 'md'
 }: ProgressBarComponentProps) => {
   const renderValueProgress = useCallback(() => {
     const MAPPING_COLOR_VALUE_PROGRESS = {

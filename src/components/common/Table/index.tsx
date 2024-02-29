@@ -78,7 +78,7 @@ const DataTable = ({
   }, [currentPage, data, isLoading, onChangePage, totalPage]);
 
   return (
-    <TableContainer bg="light.300">
+    <TableContainer bg="light.300" height={911} overflowY="auto">
       <Table>
         <Thead>
           <Tr bg="primary.300">
