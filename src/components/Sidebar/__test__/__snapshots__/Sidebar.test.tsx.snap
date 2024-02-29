@@ -11,11 +11,16 @@ exports[`Sidebar component Match snapshot for sidebar 1`] = `
       <div
         class="css-7i9x98"
       >
-        <img
-          alt="urlBrand"
-          class="chakra-image css-0"
-          src=""
-        />
+        <a
+          class="chakra-link css-spn4bz"
+          href="/dashboard"
+        >
+          <img
+            alt="urlBrand"
+            class="chakra-image css-0"
+            src=""
+          />
+        </a>
       </div>
       <ul
         class="css-155za0w"
@@ -45,7 +50,7 @@ exports[`Sidebar component Match snapshot for sidebar 1`] = `
             </svg>
             <a
               class="chakra-link css-yud0dq"
-              href="/"
+              href="/dashboard"
             >
               Dashboard
             </a>

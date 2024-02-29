@@ -38,7 +38,7 @@ const Dropdown = ({
         <IconButton
           aria-label="show-dropdown"
           variant="default"
-          icon={<Avatar size={{ base: 'sm', md: 'lg' }} />}
+          icon={<Avatar size={{ base: 'sm', lg: 'lg' }} />}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
         />
