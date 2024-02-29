@@ -1,5 +1,5 @@
-import { Button, HStack } from '@chakra-ui/react';
 import { memo } from 'react';
+import { Button, HStack } from '@chakra-ui/react';
 
 interface PaginationProps {
   currentPage: number;
@@ -31,16 +31,18 @@ const Pagination = ({
         size="xs"
         borderRadius="null"
         color="primary.300"
+        borderLeftRadius="base"
         _disabled={{
-          bg: 'primary.300',
-          borderColor: 'primary.300',
-          color: 'light.300'
+          color: 'secondary.350',
+          cursor: 'not-allowed'
         }}
-        _hover={{
-          bg: 'primary.300',
-          borderColor: 'primary.300',
-          color: 'light.300'
-        }}
+        {...(currentPage !== 1 && {
+          _hover: {
+            bg: 'primary.300',
+            borderColor: 'primary.300',
+            color: 'light.300'
+          }
+        })}
         isDisabled={currentPage === 1}
         onClick={handlePreviousPage}>
         Previous
@@ -77,16 +79,18 @@ const Pagination = ({
         size="xs"
         borderRadius="null"
         color="primary.300"
+        borderRightRadius="base"
         _disabled={{
-          bg: 'primary.300',
-          borderColor: 'primary.300',
-          color: 'light.300'
+          color: 'secondary.350',
+          cursor: 'not-allowed'
         }}
-        _hover={{
-          bg: 'primary.300',
-          borderColor: 'primary.300',
-          color: 'light.300'
-        }}
+        {...(currentPage !== totalPage && {
+          _hover: {
+            bg: 'primary.300',
+            borderColor: 'primary.300',
+            color: 'light.300'
+          }
+        })}
         isDisabled={currentPage === totalPage}
         onClick={handleNextPage}>
         Next

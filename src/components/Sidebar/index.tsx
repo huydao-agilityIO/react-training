@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Link as ReactRouterLink } from 'react-router-dom';
+import { Link as ReactRouterLink, useNavigate } from 'react-router-dom';
 import {
   Box,
   Container,
@@ -17,6 +17,7 @@ import { SidebarMapping } from '@shared/types';
 
 // Svg
 import HomeIcon from '@shared/SVG/HomeIcon';
+import { ROUTE } from '@shared/constants';
 
 interface SidebarProps {
   sidebarMapping: SidebarMapping[];
@@ -24,6 +25,10 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ sidebarMapping, urlBrand = '' }: SidebarProps) => {
+  const navigate = useNavigate();
+
+  const handleNavigateDashboard = () => navigate(`/${ROUTE.DASHBOARD}`);
+
   return (
     <Stack>
       <Container
@@ -37,7 +42,13 @@ const Sidebar = ({ sidebarMapping, urlBrand = '' }: SidebarProps) => {
         p={0}
         width={{ lg: 52, xl: 270 }}>
         <Box px={14} py={16}>
-          <Image src={urlBrand} alt="urlBrand" />
+          <Link as={ReactRouterLink} to={ROUTE.DASHBOARD}>
+            <Image
+              src={urlBrand}
+              alt="urlBrand"
+              onClick={handleNavigateDashboard}
+            />
+          </Link>
         </Box>
         <List>
           {sidebarMapping.map(({ heading, contentLink, pathRouter }, index) => (
@@ -60,7 +71,7 @@ const Sidebar = ({ sidebarMapping, urlBrand = '' }: SidebarProps) => {
                     color: 'primary.200'
                   }}
                   as={ReactRouterLink}
-                  href={pathRouter}>
+                  to={pathRouter}>
                   {contentLink}
                 </Link>
               </HStack>

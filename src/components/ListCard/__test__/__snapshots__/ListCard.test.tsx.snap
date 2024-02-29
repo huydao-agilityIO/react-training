@@ -13,14 +13,14 @@ exports[`List Card match list card with snap shot 1`] = `
         class="chakra-card css-1nnsn8o"
       >
         <span
-          class="chakra-avatar css-18scjt5"
+          class="chakra-avatar css-1g8xkdi"
         >
           <div
-            aria-label="Jovan Crist"
+            aria-label="Dr. Jovan Crist"
             class="chakra-avatar__initials css-1ebyn6"
             role="img"
           >
-            JC
+            DC
           </div>
         </span>
         <div
@@ -29,7 +29,7 @@ exports[`List Card match list card with snap shot 1`] = `
           <h2
             class="chakra-heading css-1cj8ah8"
           >
-            Jovan Crist
+            Dr. Jovan Crist
           </h2>
         </div>
         <div
@@ -50,14 +50,14 @@ exports[`List Card match list card with snap shot 1`] = `
         class="chakra-card css-1nnsn8o"
       >
         <span
-          class="chakra-avatar css-10wf0hw"
+          class="chakra-avatar css-ua96pw"
         >
           <div
-            aria-label="Lazaro Schumm"
+            aria-label="Dr. Lazaro Schumm"
             class="chakra-avatar__initials css-1ebyn6"
             role="img"
           >
-            LS
+            DS
           </div>
         </span>
         <div
@@ -66,7 +66,7 @@ exports[`List Card match list card with snap shot 1`] = `
           <h2
             class="chakra-heading css-1cj8ah8"
           >
-            Lazaro Schumm
+            Dr. Lazaro Schumm
           </h2>
         </div>
         <div
@@ -87,14 +87,14 @@ exports[`List Card match list card with snap shot 1`] = `
         class="chakra-card css-1nnsn8o"
       >
         <span
-          class="chakra-avatar css-5pqtwz"
+          class="chakra-avatar css-16gz0ao"
         >
           <div
-            aria-label="Vidal Russel"
+            aria-label="Dr. Vidal Russel"
             class="chakra-avatar__initials css-1ebyn6"
             role="img"
           >
-            VR
+            DR
           </div>
         </span>
         <div
@@ -103,7 +103,7 @@ exports[`List Card match list card with snap shot 1`] = `
           <h2
             class="chakra-heading css-1cj8ah8"
           >
-            Vidal Russel
+            Dr. Vidal Russel
           </h2>
         </div>
         <div
@@ -124,14 +124,14 @@ exports[`List Card match list card with snap shot 1`] = `
         class="chakra-card css-1nnsn8o"
       >
         <span
-          class="chakra-avatar css-1jgi1su"
+          class="chakra-avatar css-tabov3"
         >
           <div
-            aria-label="Jed Kovacek"
+            aria-label="Dr. Jed Kovacek"
             class="chakra-avatar__initials css-1ebyn6"
             role="img"
           >
-            JK
+            DK
           </div>
         </span>
         <div
@@ -140,7 +140,7 @@ exports[`List Card match list card with snap shot 1`] = `
           <h2
             class="chakra-heading css-1cj8ah8"
           >
-            Jed Kovacek
+            Dr. Jed Kovacek
           </h2>
         </div>
         <div
@@ -161,14 +161,14 @@ exports[`List Card match list card with snap shot 1`] = `
         class="chakra-card css-1nnsn8o"
       >
         <span
-          class="chakra-avatar css-1tjkhxb"
+          class="chakra-avatar css-on88n9"
         >
           <div
-            aria-label="Tatyana Koepp"
+            aria-label="Dr. Tatyana Koepp"
             class="chakra-avatar__initials css-1ebyn6"
             role="img"
           >
-            TK
+            DK
           </div>
         </span>
         <div
@@ -177,7 +177,7 @@ exports[`List Card match list card with snap shot 1`] = `
           <h2
             class="chakra-heading css-1cj8ah8"
           >
-            Tatyana Koepp
+            Dr. Tatyana Koepp
           </h2>
         </div>
         <div

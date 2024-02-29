@@ -1,6 +1,9 @@
 import { FormEventHandler } from 'react';
 import { Control, Controller } from 'react-hook-form';
-import { Button, Checkbox, HStack } from '@chakra-ui/react';
+import { Button, Checkbox, HStack, Spinner } from '@chakra-ui/react';
+
+// Utils
+import { FORM_SCHEMA } from '@shared/utils';
 
 // Types
 import { Authentication } from '@shared/types';
@@ -11,7 +14,6 @@ import { ROUTE } from '@shared/constants';
 // Components
 import AuthFormContainer from '../AuthFormContainer';
 import { FormGroupControl } from '@shared/components';
-import { FORM_SCHEMA } from '@shared/utils/validators';
 
 interface AuthFormProps {
   control?: Control<Authentication>;
@@ -119,11 +121,19 @@ const RegisterForm = ({
         );
       }}
     />
-    <Checkbox size="lg" color="dark.50" colorScheme="gray">
+    <Checkbox
+      size="lg"
+      color="dark.50"
+      colorScheme="gray"
+      isDisabled={isLoading}>
       Keep me up to date
     </Checkbox>
 
-    <Button type="submit" w="full" isLoading={isLoading}>
+    <Button
+      type="submit"
+      w="full"
+      isLoading={isLoading}
+      spinner={<Spinner color="light.300" />}>
       Sign up
     </Button>
   </AuthFormContainer>

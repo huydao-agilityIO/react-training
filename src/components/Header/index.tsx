@@ -96,7 +96,7 @@ const Header = ({ fullName, onSearch }: HeaderProps) => {
           />
         </HStack>
       </HStack>
-      <Show below={`${md}px`}>
+      <Show below={`${md - 1}px`}>
         <SearchBar
           placeholder="Search here..."
           leftContent={<SearchIcon />}

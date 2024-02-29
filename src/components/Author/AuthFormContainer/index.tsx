@@ -56,7 +56,7 @@ const AuthFormContainer = ({
                   _hover={{ textDecoration: 'none' }}
                   as={LinkRouter}
                   to="">
-                  Forget Password?
+                  Forgot Password?
                 </Link>
               </VStack>
             </VStack>

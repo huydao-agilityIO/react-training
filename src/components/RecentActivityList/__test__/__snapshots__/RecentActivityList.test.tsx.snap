@@ -18,7 +18,7 @@ exports[`Recent Activity list match snap shot 1`] = `
         <h2
           class="chakra-heading css-1s914pu"
         >
-          5 min ago
+          NaN year ago
         </h2>
         <p
           class="chakra-text css-zffddc"
@@ -39,7 +39,7 @@ exports[`Recent Activity list match snap shot 1`] = `
         <h2
           class="chakra-heading css-1s914pu"
         >
-          10 min ago
+          NaN year ago
         </h2>
         <p
           class="chakra-text css-zffddc"
@@ -60,7 +60,7 @@ exports[`Recent Activity list match snap shot 1`] = `
         <h2
           class="chakra-heading css-1s914pu"
         >
-          15 min ago
+          NaN year ago
         </h2>
         <p
           class="chakra-text css-zffddc"
