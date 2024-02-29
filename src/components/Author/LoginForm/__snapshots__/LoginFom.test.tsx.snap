@@ -82,7 +82,7 @@ exports[`LoginForm renders correctly 1`] = `
                 class="chakra-link css-3ctcoe"
                 href="/"
               >
-                Forget Password?
+                Forgot Password?
               </a>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import { Control, Controller } from 'react-hook-form';
-import { Button } from '@chakra-ui/react';
+import { Button, Spinner } from '@chakra-ui/react';
 
 // Constants
 import { ROUTE } from '@shared/constants';
@@ -76,7 +76,11 @@ const LoginForm = ({
         );
       }}
     />
-    <Button type="submit" w="full" isLoading={isLoading}>
+    <Button
+      type="submit"
+      w="full"
+      isLoading={isLoading}
+      spinner={<Spinner color="light.300" />}>
       Log In
     </Button>
   </AuthFormContainer>

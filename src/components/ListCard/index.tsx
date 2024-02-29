@@ -20,7 +20,7 @@ const ListCard = ({ cards }: ListCardProps) => (
         <Card
           url={urlAvatar}
           description={description}
-          name={formatFullName(firstName, lastName)}
+          name={`Dr. ${formatFullName(firstName, lastName)}`}
         />
       </ListItem>
     ))}

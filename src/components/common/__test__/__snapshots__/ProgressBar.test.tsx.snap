@@ -13,7 +13,7 @@ exports[`Button Component match snapshot with danger variant 1`] = `
     <p
       class="chakra-text css-1cujaad"
     >
-      %
+      0%
     </p>
     <div
       class="css-971dyu"
@@ -48,7 +48,7 @@ exports[`Button Component match snapshot with primary variant 1`] = `
     <p
       class="chakra-text css-1vmm8s8"
     >
-      %
+      0%
     </p>
     <div
       class="css-971dyu"
@@ -83,7 +83,7 @@ exports[`Button Component match snapshot with success variant 1`] = `
     <p
       class="chakra-text css-160sqmu"
     >
-      %
+      0%
     </p>
     <div
       class="css-971dyu"
@@ -118,7 +118,7 @@ exports[`Button Component match snapshot with warning variant 1`] = `
     <p
       class="chakra-text css-ne6ooi"
     >
-      %
+      0%
     </p>
     <div
       class="css-971dyu"

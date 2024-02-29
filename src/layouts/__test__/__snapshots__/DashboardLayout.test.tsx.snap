@@ -14,11 +14,16 @@ exports[`Dashboard Layout Match snapshot  1`] = `
         <div
           class="css-7i9x98"
         >
-          <img
-            alt="urlBrand"
-            class="chakra-image css-0"
-            src=""
-          />
+          <a
+            class="chakra-link css-spn4bz"
+            href="/dashboard"
+          >
+            <img
+              alt="urlBrand"
+              class="chakra-image css-0"
+              src=""
+            />
+          </a>
         </div>
         <ul
           class="css-155za0w"
@@ -48,7 +53,7 @@ exports[`Dashboard Layout Match snapshot  1`] = `
               </svg>
               <a
                 class="chakra-link css-yud0dq"
-                href="/"
+                href="/dashboard"
               >
                 Dashboard
               </a>
@@ -171,7 +176,7 @@ exports[`Dashboard Layout Match snapshot  1`] = `
           >
             <span
               aria-hidden="true"
-              class="chakra-avatar css-muc813"
+              class="chakra-avatar css-15x9kya"
               focusable="false"
             >
               <svg
