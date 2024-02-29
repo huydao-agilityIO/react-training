@@ -22,7 +22,12 @@ const ListLayout = ({
   rightElement = '',
   isLoading = false
 }: ListLayoutProps) => (
-  <Stack bg="light.300" borderRadius="xl" p={{ base: 4, md: 7.5 }}>
+  <Stack
+    w="full"
+    bg="light.300"
+    borderRadius="xl"
+    p={{ base: 4, md: 7.5 }}
+    marginTop={7.5}>
     <HStack marginBottom={6}>
       <Heading size="md" variant="secondary" textTransform="capitalize">
         {title}
