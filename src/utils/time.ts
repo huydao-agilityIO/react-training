@@ -1,14 +1,14 @@
-import dayjs from 'dayjs';
+import dayjs, { extend } from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 
 // Use relativeTime to calculate relative times
-dayjs.extend(relativeTime);
+extend(relativeTime);
 
 // Use utc and timezone to calculate time zone
-dayjs.extend(utc);
-dayjs.extend(timezone);
+extend(utc);
+extend(timezone);
 
 export const calculateTime = (time: Date): string => {
   const currentTime = dayjs();
@@ -26,7 +26,7 @@ export const calculateTime = (time: Date): string => {
     return `${hours} hour${hours > 1 ? 's' : ''} ago`;
   }
 
-  if (hours < 24) {
+  if (hours > 24) {
     return `${days} day${days > 1 ? 's' : ''} ago`;
   }
 

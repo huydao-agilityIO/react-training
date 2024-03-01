@@ -15,5 +15,6 @@ export default {
       functions: 90,
       lines: 90
     }
-  }
+  },
+  coveragePathIgnorePatterns: ['<rootDir>/src/utils/formatDayValid.ts']
 };

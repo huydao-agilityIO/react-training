@@ -13,13 +13,6 @@ jest.mock('@fontsource/rajdhani', () => ({}));
 
 jest.mock('@shared/assets/images/brand.png', () => ({}));
 
-jest.mock('dayjs', () => ({
-  __esModule: true,
-  default: jest.fn(() => ({
-    format: jest.fn()
-  }))
-}));
-
 // Themes
 import configThemes from '../src/themes';
 
@@ -34,6 +27,15 @@ window.matchMedia = jest.fn().mockImplementation((query) => ({
   onchange: null,
   addListener: jest.fn(),
   removeListener: jest.fn()
+}));
+
+jest.mock('dayjs', () => ({
+  __esModule: true,
+  default: jest.fn().mockImplementation(() => ({
+    format: jest.fn(),
+    diff: jest.fn()
+  })),
+  extend: jest.fn()
 }));
 
 const customRender = <
