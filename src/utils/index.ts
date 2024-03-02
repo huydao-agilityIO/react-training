@@ -1,3 +1,4 @@
 export * from './format';
-export * from './validators';
+export * from './formatDayValid';
 export * from './time';
+export * from './validators';
