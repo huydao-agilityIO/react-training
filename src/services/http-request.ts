@@ -1,97 +1,101 @@
 // Constants
-import { ERROR_MESSAGES_SERVICES, METHOD } from '@shared/constants';
+import { METHOD } from '@shared/constants';
+
+/**
+ * The function get data
+ *
+ * @param url - The API
+ */
+export const getData = async (url: string) => {
+  // eslint-disable-next-line no-useless-catch
+  try {
+    const response: Response = await fetch(url, {
+      method: METHOD.GET
+    });
+
+    if (!response.ok) {
+      const message: string = await response.text();
+      throw message;
+    }
+
+    return response.json();
+  } catch (error) {
+    throw error;
+  }
+};
 
 /**
  * The function post data
  *
  * @param url - The API
- * @param data - The value
+ * @param dataField - The value input
  */
-export async function getData(url: string) {
-  const response = await fetch(url, {
-    method: METHOD.GET
-  })
-    .then((res) => {
-      if (!res.ok) {
-        return res.text();
-      }
-      return res.json();
-    })
-    .catch(() => {
-      throw new Error(ERROR_MESSAGES_SERVICES.END_POINT);
+export const postData = async <T>(url: string, dataField: T) => {
+  // eslint-disable-next-line no-useless-catch
+  try {
+    const response = await fetch(url, {
+      method: METHOD.POST,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dataField)
     });
 
-  return response;
-}
+    if (!response.ok) {
+      const message: string = await response.text();
+      throw message;
+    }
+
+    return response.json();
+  } catch (error) {
+    throw error;
+  }
+};
 
 /**
- * The function post data
+ * The function put data
  *
  * @param url - The API
- * @param data - The value
+ * @param dataField - The value input
  */
-export async function postData<T>(url: string, dataField: T) {
-  const response = await fetch(url, {
-    method: METHOD.POST,
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(dataField)
-  })
-    .then((res) => {
-      if (!res.ok) {
-        return res.text();
-      }
-      return res.json();
-    })
-    .catch(() => {
-      throw new Error(ERROR_MESSAGES_SERVICES.END_POINT);
+export const putData = async <T>(url: string, dataField: T) => {
+  // eslint-disable-next-line no-useless-catch
+  try {
+    const response = await fetch(url, {
+      method: METHOD.PUT,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dataField)
     });
 
-  return response;
-}
-/**
- * The function post data
- *
- * @param url - The API
- * @param data - The value
- */
-export async function putData<T>(url: string, dataField: T) {
-  const response = await fetch(url, {
-    method: METHOD.PUT,
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(dataField)
-  })
-    .then((res) => {
-      if (!res.ok) {
-        return res.text();
-      }
-      return res.json();
-    })
-    .catch(() => {
-      throw new Error(ERROR_MESSAGES_SERVICES.END_POINT);
-    });
+    if (!response.ok) {
+      const message: string = await response.text();
+      throw message;
+    }
 
-  return response;
-}
+    return response.json();
+  } catch (error) {
+    throw error;
+  }
+};
 
 /**
- * The function post data
+ * The function delete data
  *
  * @param url - The API
  */
-export async function deleteData(url: string) {
-  const response = await fetch(url, {
-    method: METHOD.DELETE,
-    headers: { 'Content-Type': 'application/json' }
-  })
-    .then((res) => {
-      if (!res.ok) {
-        return res.text();
-      }
-      return res.json();
-    })
-    .catch(() => {
-      throw new Error(ERROR_MESSAGES_SERVICES.END_POINT);
+export const deleteData = async (url: string) => {
+  // eslint-disable-next-line no-useless-catch
+  try {
+    const response = await fetch(url, {
+      method: METHOD.DELETE,
+      headers: { 'Content-Type': 'application/json' }
     });
 
-  return response;
-}
+    if (!response.ok) {
+      const message: string = await response.text();
+      throw message;
+    }
+
+    return response.json();
+  } catch (error) {
+    throw error;
+  }
+};
