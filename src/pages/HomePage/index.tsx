@@ -1,3 +1,8 @@
+import { memo } from 'react';
+
+// Hocs
+import { withIsAuth } from '@shared/hocs';
+
 // Layouts
 import { DashboardLayout } from '@shared/layouts';
 
@@ -6,7 +11,7 @@ import HospitalStaffLayout from '@shared/pages/HomePage/HospitalStaffLayout';
 import TablePatientLayout from '@shared/pages/HomePage/TablePatientLayout';
 import RecentActivityLayout from '@shared/pages/HomePage/RecentActivityLayout';
 
-const HomePage = () => {
+const Component = () => {
   return (
     <DashboardLayout onSearch={() => {}}>
       <TablePatientLayout />
@@ -15,5 +20,7 @@ const HomePage = () => {
     </DashboardLayout>
   );
 };
+
+const HomePage = memo(withIsAuth(Component));
 
 export default HomePage;

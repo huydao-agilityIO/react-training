@@ -31,14 +31,18 @@ import {
 
 // Components
 import { Dropdown, SearchBar, Sidebar } from '@shared/components';
+import { useAuth } from '@shared/hooks';
+import { formatFullName } from '@shared/utils';
+import { ACTION } from '@shared/types';
 
 interface HeaderProps {
-  fullName?: string;
   onSearch: ChangeEventHandler<HTMLInputElement>;
 }
 
-const Header = ({ fullName, onSearch }: HeaderProps) => {
+const Header = ({ onSearch }: HeaderProps) => {
   const { md, lg } = breakpoints || {};
+  const { state, dispatch } = useAuth();
+  const { firstName, lastName } = state.auth;
   const {
     isOpen: isOpenDropdown,
     onOpen: onOpenDropdown,
@@ -49,6 +53,12 @@ const Header = ({ fullName, onSearch }: HeaderProps) => {
     onOpen: onOpenSideBar,
     onClose: onCloseSideBar
   } = useDisclosure() || {};
+
+  const handleLogOut = () =>
+    dispatch({
+      type: ACTION.LOG_OUT,
+      payload: { ...state.auth, isAuth: false }
+    });
 
   return (
     <VStack p={{ base: 5, md: 7.5 }} bg="light.300">
@@ -89,10 +99,11 @@ const Header = ({ fullName, onSearch }: HeaderProps) => {
           <NotificationIcon />
           <MessageIcon />
           <Dropdown
-            fullName={fullName}
+            fullName={formatFullName(firstName, lastName)}
             isOpen={isOpenDropdown}
-            onMouseEnter={onOpenDropdown}
-            onMouseLeave={onCloseDropdown}
+            onOpen={onOpenDropdown}
+            onClose={onCloseDropdown}
+            onLogOut={handleLogOut}
           />
         </HStack>
       </HStack>

@@ -21,26 +21,27 @@ interface DropdownProps {
   fullName?: string;
   major?: string;
   isOpen?: boolean;
-  onMouseEnter?: MouseEventHandler<HTMLButtonElement>;
-  onMouseLeave?: MouseEventHandler<HTMLButtonElement>;
+  onLogOut?: MouseEventHandler<HTMLButtonElement>;
+  onOpen?: MouseEventHandler<HTMLButtonElement>;
+  onClose?: () => void;
 }
 
 const Dropdown = ({
   fullName = '',
   major = 'management',
   isOpen = false,
-  onMouseEnter,
-  onMouseLeave
+  onLogOut,
+  onOpen,
+  onClose
 }: DropdownProps) => {
   return (
-    <Popover isOpen={isOpen}>
+    <Popover isOpen={isOpen} onClose={onClose}>
       <PopoverTrigger>
         <IconButton
           aria-label="show-dropdown"
           variant="default"
           icon={<Avatar size={{ base: 'sm', lg: 'lg' }} />}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
+          onClick={onOpen}
         />
       </PopoverTrigger>
       <PopoverContent
@@ -75,7 +76,8 @@ const Dropdown = ({
               variant="default"
               paddingX={0}
               color="light.300"
-              rightIcon={<LogoutIcon />}>
+              rightIcon={<LogoutIcon />}
+              onClick={onLogOut}>
               Log out
             </Button>
           </VStack>
