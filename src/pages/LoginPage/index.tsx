@@ -13,9 +13,9 @@ const LoginPage = () => {
   const { control, handleSubmit } = useForm<Omit<Authentication, 'fullName'>>();
 
   const {
-    data: responseAPI,
     isLoading,
-    mutateAsync: addNewAuth
+    mutateAsync: addNewAuth,
+    error: errorAPI
   } = useSignInAuth();
 
   const handleSubmitFormLogin = async (
@@ -28,7 +28,7 @@ const LoginPage = () => {
     <LoginForm
       control={control}
       isLoading={isLoading}
-      errorResponseAPI={responseAPI}
+      errorResponseAPI={errorAPI as string}
       onSubmitForm={handleSubmit(handleSubmitFormLogin)}
     />
   );
