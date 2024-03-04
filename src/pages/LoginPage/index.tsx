@@ -1,16 +1,23 @@
+import { memo } from 'react';
+
 import { useForm } from 'react-hook-form';
 
 // Apis
 import { useSignInAuth } from '@shared/apis';
 
+// Hocs
+import { withIsUnAuth } from '@shared/hocs';
+
 // Types
-import { Authentication } from '@shared/types';
+import { ACTION, Authentication } from '@shared/types';
 
 // Components
 import { LoginForm } from '@shared/components';
+import { useAuth } from '@shared/hooks';
 
-const LoginPage = () => {
-  const { control, handleSubmit } = useForm<Omit<Authentication, 'fullName'>>();
+const Component = () => {
+  const { control, handleSubmit } = useForm<Authentication>();
+  const { dispatch } = useAuth();
 
   const {
     isLoading,
@@ -18,10 +25,18 @@ const LoginPage = () => {
     error: errorAPI
   } = useSignInAuth();
 
-  const handleSubmitFormLogin = async (
-    payloadData: Omit<Authentication, 'fullName'>
-  ) => {
-    await addNewAuth(payloadData);
+  const handleSubmitFormLogin = async (payloadData: Authentication) => {
+    await addNewAuth(payloadData, {
+      onSuccess: (data) => {
+        dispatch({
+          type: ACTION.LOG_IN,
+          payload: {
+            ...data,
+            isAuth: true
+          }
+        });
+      }
+    });
   };
 
   return (
@@ -33,5 +48,7 @@ const LoginPage = () => {
     />
   );
 };
+
+const LoginPage = memo(withIsUnAuth(Component));
 
 export default LoginPage;

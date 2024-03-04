@@ -5,6 +5,7 @@ export type Authentication = {
   email: string;
   avatarURL: string;
   password: string;
+  isAuth: boolean;
 };
 
 export type Patient = {

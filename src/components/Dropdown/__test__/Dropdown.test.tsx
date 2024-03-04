@@ -17,33 +17,18 @@ describe('Dropdown', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should call onMouseEnter when the icon button is hovered', () => {
-    const onMouseEnter = jest.fn();
+  it('should call onOpen when the icon button is hovered', () => {
+    const onOpen = jest.fn();
     const { getByRole } = testLibReactUtils.render(
       <Dropdown
         fullName={formatFullName(VALID_INFO.firstName, VALID_INFO.lastName)}
         isOpen={false}
-        onMouseEnter={onMouseEnter}
+        onOpen={onOpen}
       />
     );
     const iconButton = getByRole('button');
 
-    testLibReactUtils.fireEvent.mouseEnter(iconButton);
-    expect(onMouseEnter).toHaveBeenCalled();
-  });
-
-  it('should call onMouseLeave when the icon button is no longer hovered', () => {
-    const onMouseLeave = jest.fn();
-    const { getByRole } = testLibReactUtils.render(
-      <Dropdown
-        fullName={formatFullName(VALID_INFO.firstName, VALID_INFO.lastName)}
-        isOpen={false}
-        onMouseLeave={onMouseLeave}
-      />
-    );
-    const iconButton = getByRole('button');
-
-    testLibReactUtils.fireEvent.mouseLeave(iconButton);
-    expect(onMouseLeave).toHaveBeenCalled();
+    testLibReactUtils.fireEvent.click(iconButton);
+    expect(onOpen).toHaveBeenCalled();
   });
 });
