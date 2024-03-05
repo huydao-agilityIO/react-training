@@ -9,7 +9,7 @@ const mockFetch = jest.fn().mockImplementation(() =>
   })
 );
 
-global.fetch = mockFetch;
+(global as any).fetch = mockFetch;
 
 describe('getData', () => {
   beforeEach(() => {
@@ -29,12 +29,12 @@ describe('getData', () => {
       json: jest.fn().mockResolvedValue(responseData)
     };
 
-    global.fetch = jest.fn().mockResolvedValue(mockResponse);
+    (global as any).fetch = jest.fn().mockResolvedValue(mockResponse);
 
     const data = await getData(API_HOSPITAL_MANAGEMENT.AUTHENTICATION_SIGN_IN);
 
-    expect(global.fetch).toHaveBeenCalledTimes(1);
-    expect(global.fetch).toHaveBeenCalledWith(
+    expect((global as any).fetch).toHaveBeenCalledTimes(1);
+    expect((global as any).fetch).toHaveBeenCalledWith(
       API_HOSPITAL_MANAGEMENT.AUTHENTICATION_SIGN_IN,
       {
         method: METHOD.GET
@@ -50,7 +50,7 @@ describe('getData', () => {
       text: jest.fn().mockResolvedValue('404 Not Found')
     };
 
-    global.fetch = jest.fn().mockResolvedValue(mockResponse);
+    (global as any).fetch = jest.fn().mockResolvedValue(mockResponse);
 
     await expect(getData(url)).rejects.toEqual('404 Not Found');
   });
@@ -69,14 +69,14 @@ describe('postData', () => {
       json: jest.fn().mockResolvedValue(responseData)
     };
 
-    global.fetch = jest.fn().mockResolvedValue(mockResponse);
+    (global as any).fetch = jest.fn().mockResolvedValue(mockResponse);
 
     const result = await postData<typeof requestData>(
       API_HOSPITAL_MANAGEMENT.AUTHENTICATION_SIGN_IN,
       requestData
     );
 
-    expect(global.fetch).toHaveBeenCalledWith(
+    expect((global as any).fetch).toHaveBeenCalledWith(
       API_HOSPITAL_MANAGEMENT.AUTHENTICATION_SIGN_IN,
       {
         method: METHOD.POST,
@@ -96,7 +96,7 @@ describe('postData', () => {
       ok: false,
       text: jest.fn().mockResolvedValue('test')
     };
-    global.fetch = jest.fn().mockResolvedValue(mockResponse);
+    (global as any).fetch = jest.fn().mockResolvedValue(mockResponse);
 
     const url = 'https://example.com/api/error';
 
@@ -120,11 +120,11 @@ describe('putData', () => {
       json: jest.fn().mockResolvedValue(responseData)
     };
 
-    global.fetch = jest.fn().mockResolvedValue(mockResponse);
+    (global as any).fetch = jest.fn().mockResolvedValue(mockResponse);
 
     const result = await putData<typeof requestData>(url, requestData);
 
-    expect(global.fetch).toHaveBeenCalledWith(url, {
+    expect((global as any).fetch).toHaveBeenCalledWith(url, {
       method: METHOD.PUT,
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(requestData)
@@ -139,7 +139,7 @@ describe('putData', () => {
       ok: false,
       text: jest.fn().mockResolvedValue('error message')
     };
-    global.fetch = jest.fn().mockResolvedValue(mockResponse);
+    (global as any).fetch = jest.fn().mockResolvedValue(mockResponse);
 
     await expect(putData<typeof dataField>(url, dataField)).rejects.toEqual(
       'error message'
@@ -162,11 +162,11 @@ describe('deleteData', () => {
       json: jest.fn().mockResolvedValue(responseData)
     };
 
-    global.fetch = jest.fn().mockResolvedValue(mockResponse);
+    (global as any).fetch = jest.fn().mockResolvedValue(mockResponse);
 
     const result = await deleteData(url);
 
-    expect(global.fetch).toHaveBeenCalledWith(url, {
+    expect((global as any).fetch).toHaveBeenCalledWith(url, {
       method: METHOD.DELETE,
       headers: { 'Content-Type': 'application/json' }
     });
@@ -181,7 +181,7 @@ describe('deleteData', () => {
       text: jest.fn().mockResolvedValue('error message')
     };
 
-    global.fetch = jest.fn().mockResolvedValue(mockResponse);
+    (global as any).fetch = jest.fn().mockResolvedValue(mockResponse);
 
     await expect(deleteData(url)).rejects.toEqual('error message');
   });

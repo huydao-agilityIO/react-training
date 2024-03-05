@@ -38,6 +38,18 @@ jest.mock('dayjs', () => ({
   extend: jest.fn()
 }));
 
+jest.mock('react', () => {
+  const ActualReact = jest.requireActual('react');
+  return {
+    ...ActualReact,
+    useContext: jest.fn()
+  };
+});
+
+jest.mock('@shared/hooks', () => ({
+  useAuth: jest.fn()
+}));
+
 const customRender = <
   Q extends jestFunc.Queries = typeof jestFunc.queries,
   Container extends Element | DocumentFragment = HTMLElement,

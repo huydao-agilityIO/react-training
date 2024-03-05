@@ -1,10 +1,17 @@
-import { Context, ReactNode, Reducer, createContext, useReducer } from 'react';
+import {
+  Context,
+  ReactElement,
+  Reducer,
+  createContext,
+  useMemo,
+  useReducer
+} from 'react';
 
 // Types
 import { AuthAction, AuthContextType, AuthState } from '@shared/types';
 import { authReducer } from '@shared/stores';
 
-const initData = {
+export const initData = {
   _id: '',
   firstName: '',
   lastName: '',
@@ -17,7 +24,7 @@ const initData = {
 export const AuthContext: Context<AuthContextType | null> =
   createContext<AuthContextType | null>(null);
 
-export const AuthProvider = ({ children }: { children: ReactNode }) => {
+export const AuthProvider = ({ children }: { children: ReactElement }) => {
   const [state, dispatch] = useReducer<Reducer<AuthState, AuthAction>>(
     authReducer,
     {
@@ -25,9 +32,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   );
 
+  const contextValue: AuthContextType = useMemo(
+    () => ({ state, dispatch }),
+    [state]
+  );
+
   return (
-    <AuthContext.Provider value={{ state, dispatch }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
 };
